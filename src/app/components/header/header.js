@@ -34,21 +34,21 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/about" legacyBehavior>
+                            <Link href="/" legacyBehavior>
                                 <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
                                     About
                                 </a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/services" legacyBehavior>
+                            <Link href="/" legacyBehavior>
                                 <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
                                     Services
                                 </a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contact" legacyBehavior>
+                            <Link href="/" legacyBehavior>
                                 <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
                                     Gallery
                                 </a>

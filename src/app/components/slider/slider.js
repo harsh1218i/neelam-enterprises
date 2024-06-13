@@ -82,39 +82,20 @@ const ImageSlider = () => {
   }
 
   return (
-    <div
-      {...handlers}
-      className="relative flex flex-col justify-center items-center lg:h-screen w-full bg-gray-900"
-    >
+    <div {...handlers} className="absolute top-0 flex flex-col justify-center items-center lg:h-screen w-full bg-gray-900">
       {!isTouchDevice && (
         <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
-          >
-            &#10094;
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
-          >
-            &#10095;
-          </button>
+          <button onClick={prevSlide} className="absolute left-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">&#10094;</button>
+          <button onClick={nextSlide} className="absolute right-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">&#10095;</button>
         </>
       )}
       <AnimatePresence initial={false}>
         <motion.div
-          // key={current}
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1 }}
-          // exit={{ opacity: 0 }}
-          // transition={{ duration: 1 }}
-          // className="w-full h-full flex justify-center items-center"
           key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -300, opacity: 0 }}
+          transition={{ duration: 0.1, ease: "easeIn" }}
           className="w-full h-full flex justify-center items-center"
         >
           <div className="relative w-full h-full">

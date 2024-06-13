@@ -7,8 +7,8 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-[101] bg-white shadow-header xs:overflow-y-scroll md:overflow-y-visible">
-            <div className="block max-w-[1440px] mx-auto px-3 py-2 h-full max-h-lvh lg:flex md:justify-between lg:px-20 md:px-8 xs:px-4 xs:h-full xs:gap-4 shadow-header xs:overflow-y-scroll md:overflow-y-visible md:max-h-max sticky top-0 bg-white">
+        <header className="sticky top-0 z-[101] bg-transparent shadow-header xs:overflow-y-scroll md:overflow-y-visible">
+            <div className="block max-w-[1440px] mx-auto px-3 py-2 h-full max-h-lvh lg:flex md:justify-between lg:px-20 md:px-8 xs:px-4 xs:h-full xs:gap-4 shadow-header xs:overflow-y-scroll md:overflow-y-visible md:max-h-max sticky top-0 bg-transparent">
                 <div className="container px-4 flex lg:basis-1/3 justify-between items-center">
                     <div className="text-lg font-bold inline-block">
                         <Link href="/" legacyBehavior>

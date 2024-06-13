@@ -84,7 +84,7 @@ const ImageSlider = () => {
   return (
     <div
       {...handlers}
-      className="relative flex flex-col justify-center items-center h-full w-full bg-gray-900"
+      className="relative flex flex-col justify-center items-center lg:h-screen w-full bg-gray-900"
     >
       {!isTouchDevice && (
         <>

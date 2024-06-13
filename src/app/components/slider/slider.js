@@ -9,22 +9,22 @@ const images = [
   {
     src: '/images/img1.jpg',
     alt: 'Image 1',
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
   {
     src: '/images/img2.jpg',
     alt: 'Image 2',
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
   {
     src: '/images/img3.jpg',
     alt: 'Image 3',
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
   {
     src: '/images/img4.jpg',
     alt: 'Image 4',
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
 ];
 
@@ -37,7 +37,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
-    }, 10000); // Change image every 3 seconds
+    }, 8000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, [length]);
 
@@ -84,7 +84,7 @@ const ImageSlider = () => {
   return (
     <div
       {...handlers}
-      className="relative flex flex-col justify-center items-center h-[500px] w-full bg-gray-900"
+      className="relative flex flex-col justify-center items-center h-full w-full bg-gray-900"
     >
       {!isTouchDevice && (
         <>
@@ -104,18 +104,26 @@ const ImageSlider = () => {
       )}
       <AnimatePresence initial={false}>
         <motion.div
+          // key={current}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // exit={{ opacity: 0 }}
+          // transition={{ duration: 1 }}
+          // className="w-full h-full flex justify-center items-center"
           key={current}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="w-full h-full flex justify-center items-center"
         >
           <div className="relative w-full h-full">
             <Image
               src={images[current].src}
               alt={images[current].alt}
-              layout="fill"
+              width={1500}
+              height={600}
+              layout="intrinsic"
               objectFit={images[current].objectFit}
               className="rounded-lg"
             />
@@ -127,9 +135,7 @@ const ImageSlider = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-3 w-3 rounded-full transition-colors ${
-              index === current ? 'selected-button' : 'bg-white'
-            }`}
+            className={`h-3 w-3 rounded-full transition-colors ${index === current ? 'selected-button' : 'bg-white'}`}
           />
         ))}
       </div>

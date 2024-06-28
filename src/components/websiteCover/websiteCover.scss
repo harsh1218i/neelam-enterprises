@@ -1,0 +1,64 @@
+.main-website-cover {
+    background-repeat: no-repeat;
+    background-image: url('https://gfipartners.com/wp-content/uploads/2020/03/GFI-Contact-hero.jpg');
+    background-position: center;
+    // background-size: cover; /* Ensures the background image covers the entire container */
+    // position: relative; /* Ensures the ::before pseudo-element positions correctly */
+  }
+  
+  .main-website-cover::before {
+    content: "";
+    display: block;
+    padding-top: 24.44%; /* This is 16:9 aspect ratio (height/width * 100) */
+  }
+  
+  // .main-website-cover > .content {
+  //   // position: absolute;
+  //   // top: 0;
+  //   // left: 0;
+  //   // width: 100%;
+  //   // height: 100%;
+  //   // display: flex;
+  //   // align-items: center;
+  //   // justify-content: center;
+
+  @media (min-width: 1536px) {
+    .bg-custom-2xl {
+      background-size: 100%;
+    }
+  }
+
+  @media (min-width: 1280px) and (max-width: 1535px) {
+    .bg-custom-xl {
+      background-size: 110%;
+      min-height: 340px;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .bg-custom-lg {
+      background-size: 135%;
+      min-height: 330px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .bg-custom-md {
+      background-size: 165%;
+      min-height: 300px;
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 767px) {
+    .bg-custom-sm {
+      background-size: 200%;
+      min-height: 275px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .bg-custom-ssm {
+      background-size: 260%;
+      min-height: 240px;
+    }
+  }

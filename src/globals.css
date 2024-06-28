@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color-light: #ffffff;
+  --background-color-dark: #1a202c;
+  --text-color-light: #000000;
+  --text-color-dark: #ffffff;
+}
+
+.light {
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+}
+
+.dark {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

@@ -1,97 +1,65 @@
-"use client"
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { useSwipeable } from 'react-swipeable';
+"use client";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { useSwipeable } from "react-swipeable";
+import { usePathname } from "next/navigation";
 
 const images = [
   {
-    src: '/images/img1.jpg',
-    alt: 'Image 1',
-    objectFit: 'contain',
+    src: "/images/img1.jpg",
+    alt: "Image 1",
+    objectFit: "cover",
   },
   {
-    src: '/images/img2.jpg',
-    alt: 'Image 2',
-    objectFit: 'contain',
+    src: "/images/img2.jpg",
+    alt: "Image 2",
+    objectFit: "cover",
   },
   {
-    src: '/images/img3.jpg',
-    alt: 'Image 3',
-    objectFit: 'contain',
+    src: "/images/img3.jpg",
+    alt: "Image 3",
+    objectFit: "cover",
   },
   {
-    src: '/images/img4.jpg',
-    alt: 'Image 4',
-    objectFit: 'contain',
+    src: "/images/img4.jpg",
+    alt: "Image 4",
+    objectFit: "cover",
   },
 ];
 
-// const images = [
-//   {
-//     src: '/images/img1-large.jpg',
-//     srcSet: '/images/img1-small.jpg 480w, /images/img1-medium.jpg 800w, /images/img1-large.jpg 1200w',
-//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
-//     alt: 'Image 1',
-//     objectFit: 'cover',
-//   },
-//   {
-//     src: '/images/img2-large.jpg',
-//     srcSet: '/images/img2-small.jpg 480w, /images/img2-medium.jpg 800w, /images/img2-large.jpg 1200w',
-//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
-//     alt: 'Image 2',
-//     objectFit: 'cover',
-//   },
-//   {
-//     src: '/images/img3-large.jpg',
-//     srcSet: '/images/img3-small.jpg 480w, /images/img3-medium.jpg 800w, /images/img3-large.jpg 1200w',
-//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
-//     alt: 'Image 3',
-//     objectFit: 'cover',
-//   },
-//   {
-//     src: '/images/img4-large.jpg',
-//     srcSet: '/images/img4-small.jpg 480w, /images/img4-medium.jpg 800w, /images/img4-large.jpg 1200w',
-//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
-//     alt: 'Image 4',
-//     objectFit: 'cover',
-//   },
-// ];
-
-
-const WebsiteCover = (comingFrom) => {
+const WebsiteCover = ({ comingFrom }) => {
   const [current, setCurrent] = useState(0);
   const [opacity, setOpacity] = useState(1);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const length = images.length;
   const debounceRef = useRef(false);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
-  //   }, 8000); // Change image every 3 seconds
-  //   return () => clearInterval(interval);
-  // }, [length]);
+  const pathName = usePathname();
 
   useEffect(() => {
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
+    }, 8000); // Change image every 8 seconds
+    return () => clearInterval(interval);
+  }, [length]);
+
+  useEffect(() => {
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     setIsTouchDevice(isTouch);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // console.log(scrollTop, maxScroll, newOpacity, 'andar')
       const scrollTop = window.scrollY;
       const maxScroll = 500;
       const newOpacity = Math.max(1 - scrollTop / maxScroll, 0.2);
       setOpacity(newOpacity);
-      console.log(scrollTop, maxScroll, newOpacity, 'andar')
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -131,58 +99,61 @@ const WebsiteCover = (comingFrom) => {
   }
 
   return (
-    <div {...handlers} style={{ opacity: opacity, transition: 'opacity 0.5s ease', }} className={`flex flex-col justify-center items-center w-full bg-gray-900 ${comingFrom === "home" ? '' : 'main-website-cover bg-custom-2xl bg-custom-xl bg-custom-lg bg-custom-md bg-custom-sm bg-custom-ssm'}`}>
-      {comingFrom === "home" ?
+    <div
+      {...handlers}
+      style={{ opacity: opacity, transition: "opacity 0.5s ease" }}
+      className={`flex flex-col justify-center items-center w-full bg-gray-900 ${pathName.includes("/contact-us") ? "main-website-cover bg-custom-2xl bg-custom-xl bg-custom-lg bg-custom-md bg-custom-sm bg-custom-ssm" : ""}`}
+    >
+      {pathName.includes("/contact-us") ? null : (
         <>
           {!isTouchDevice && (
             <>
-              <button onClick={prevSlide} className="absolute left-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">&#10094;</button>
-              <button onClick={nextSlide} className="absolute right-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition">&#10095;</button>
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
+              >
+                &#10094;
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
+              >
+                &#10095;
+              </button>
             </>
           )}
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={current}
-              initial={{ x: 300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ duration: 1, ease: "easeIn" }}
-              className="w-full flex justify-center items-center"
-            >
-              <div className="relative w-full h-full">
+          <div className="relative w-full h-[40vh] md:h-[65vh] lg:h-[80vh] xl:h-[95vh]">
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={current}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute top-0 left-0 w-full h-full"
+              >
                 <Image
                   src={images[current].src}
                   alt={images[current].alt}
-                  width={1500}
-                  height={600}
-                  layout="intinsic"
-                  objectFit={images[current].objectFit}
-                  className="rounded-lg"
+                  layout="fill"
+                  objectFit="cover"
+                // className="rounded-lg"
                 />
-                {/* <Image
-              src={images[current].src}
-              srcSet={images[current].srcSet}
-              sizes={images[current].sizes}
-              alt={images[current].alt}
-              layout="fill"
-              objectFit={images[current].objectFit}
-              className="rounded-lg"
-            /> */}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-          <div className="relative bottom-4 flex space-x-2">
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <div className="relative bottom-4 h-0 flex space-x-2">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-3 w-3 rounded-full transition-colors ${index === current ? 'selected-button' : 'bg-white'}`}
+                className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-blue-500" : "bg-white"
+                  }`}
               />
             ))}
           </div>
         </>
-        : <div></div>
-      }
+      )}
     </div>
   );
 };

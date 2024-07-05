@@ -1,55 +1,77 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import DarkModeToggle from '../darkModeToggle/darkModeToggle';
+import DarkModeToggleDropdown from './darkModeToggleDropdown';
+import { usePathname } from "next/navigation";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const hamBurgerRef = useRef(null);
+    const pathName = usePathname();
+    const isContactUsPage = pathName.includes("/contact-us");
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [hamBurgerRef]);
+
+    const disableContactUs = (event) => {
+        if (isContactUsPage) {
+            event.preventDefault();
+        }
+    }
 
     return (
-        <header className={`sticky flex justify-between ${!isOpen && 'items-center'} top-0 z-[101] shadow-header xs:overflow-y-scroll md:overflow-y-visible`}>
-            <div className="block max-w-[1440px] py-2 h-full w-full lg:flex md:justify-between lg:pl-20 md:pl-8 xs:pl-4 xs:gap-4 shadow-header xs:overflow-y-scroll md:overflow-y-visible md:max-h-max sticky top-0 bg-transparent">
-                <div className="pl-4 flex justify-between items-center">
+        <header className={`sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] ${!isOpen ? 'items-center' : ''}`}>
+            <div className="block w-full lg:flex md:justify-between pl-4 lg:pl-20 md:pl-8">
+                <div className="flex justify-between items-center h-[56px]">
                     <div className="text-lg font-bold inline-block">
                         <Link href="/" legacyBehavior>
-                            <a className="text-gray-800 hover:text-gray-600">
+                            <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
                                 MyLogo
                             </a>
                         </Link>
                     </div>
                     <div className="flex lg:hidden items-center gap-3">
-                        <a className='contact-us-button block md:w-auto text-center text-white text-text-md leading-text-md py-1 px-2 font-Inter cursor-pointer hover:no-underline hover:text-white rounded' href="/contact-us">Contact Us</a>
-                        <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800">
-                            <img src={isOpen ? 'https://res.cloudinary.com/drzta9shk/image/upload/v1708320848/website/HomePage_Feb24/close_tt92ba.svg' : 'https://res.cloudinary.com/drzta9shk/image/upload/v1708320848/website/HomePage_Feb24/menu_o9eo6y.svg'} alt={isOpen ? 'Cross' : 'Menu'} />
+                        <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
+                        <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
+                            {isOpen ? <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>}
                         </div>
                     </div>
                 </div>
-                <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto w-full`}>
-                    <ul className="lg:flex lg:justify-between text-base pt-4 lg:pt-0">
+                <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
+                    <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                         <li>
                             <Link href="/" legacyBehavior>
-                                <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
+                                <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
                                     Home
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/about-us" legacyBehavior>
-                                <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
+                                <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
                                     About
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/services" legacyBehavior>
-                                <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
+                                <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
                                     Services
                                 </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/gallery" legacyBehavior>
-                                <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400">
+                                <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
                                     Gallery
                                 </a>
                             </Link>
@@ -57,11 +79,11 @@ const Header = () => {
                     </ul>
                 </nav>
                 <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
-                    <a className='contact-us-button w-full text-center text-white py-2 lg:px-6 px-4 cursor-pointer hover:no-underline hover:text-white rounded' href="/contact-us">Contact Us</a>
+                    <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
                 </div>
             </div>
-            <div className={`md:px-10 lg:py-7 ${isOpen && 'py-3'}`}>
-            <DarkModeToggle></DarkModeToggle>
+            <div className={`flex items-center px-2 md:pr-6 md:pl-4 h-[56px] ${isOpen ? 'py-3' : ''}`}>
+                <DarkModeToggleDropdown />
             </div>
         </header>
     );

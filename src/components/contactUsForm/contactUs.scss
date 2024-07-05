@@ -1,34 +1,5 @@
-#abc_section_contact_us {
-    min-height: 100px;
-    background-color: #f26621;
-
-    .contact-container {
-        max-width: 1310px;
-        width: 100%;
-        border: none;
-        margin-left: auto;
-        padding-left: 0;
-        margin-right: auto;
-
-        // .clearfix:before {
-        //     content: '\0020';
-        //     display: block;
-        //     overflow: hidden;
-        //     visibility: hidden;
-        //     width: 0;
-        //     height: 0;
-        // }
-        // .clearfix:after {
-        //     content: '\0020';
-        //     display: block;
-        //     overflow: hidden;
-        //     visibility: hidden;
-        //     width: 0;
-        //     height: 0;
-        // }
-        a {
-            height: 42px;
-            background-color: white;
-        }
-    }
+.contact-us-banner {
+    background-repeat: no-repeat;
+    background-image: url('../../../public/images/contact-ABC.jpg');
+    background-position: 100% 100%;
 }

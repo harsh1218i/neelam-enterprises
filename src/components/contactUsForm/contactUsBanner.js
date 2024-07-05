@@ -1,29 +1,31 @@
 "use client"
+import { usePathname } from "next/navigation";
 
 export default function ContactUsBanner() {
+    const pathName = usePathname();
+    const isContactUsPage = pathName.includes("/contact-us");
+
+    const disableContactUs = (event) => {
+        if (isContactUsPage) {
+            event.preventDefault();
+        }
+    }
+
     return (
-        <>
-            <div id="abc_section_contact_us" className="w-full md:py-14 py-12">
-                <div className="contact-container flex">
-                    <div className="flex flex-col w-full">
-                        <section className="av_textblock_section av-24rqt-91a9c789d976ab24f0a061e5e7a99826 " itemScope="itemscope" itemType="https://schema.org/CreativeWork">
-                            <div className="avia_textblock" itemProp="text">
-                                <h2 className="white">
-                                    Contact ABC Partners
-                                </h2>
-                                <p className="white">
-                                    ABC Partners is actively seeking new opportunities. We'd love to hear from you.
-                                </p>
-                            </div>
-                        </section>
-                    </div>
-                    <div className="flex flex-col w-full justify-center">
-                        <div className="flex justify-center">
-                            <a href="/contact-us" className="flex justify-center items-center">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
+        <div className="flex justify-center items-center bg-orange">
+        <div className="w-full min-h-[100px] md:py-14 py-10 xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 flex flex-col justify-between sm:flex-row max-w-[1310px]">
+            <div className="flex flex-col basis-4/5 sm:pb-0 text-white">
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold">
+                    Contact ABC Partners
+                </h2>
+                <p className="my-4 sm:mb-0">
+                    ABC Partners is actively seeking new opportunities. We'd love to hear from you.
+                </p>
             </div>
-        </>
+            <div className="flex w-full justify-center sm:justify-end items-center basis-1/5 max-sm:mt-4">
+                <a href="/contact-us" className={`text-black px-4 rounded bg-white h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs}>Contact Us</a>
+            </div>
+        </div>
+        </div>
     );
 }

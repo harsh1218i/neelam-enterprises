@@ -1,0 +1,31 @@
+
+// const images = [
+//   {
+//     src: '/images/img1-large.jpg',
+//     srcSet: '/images/img1-small.jpg 480w, /images/img1-medium.jpg 800w, /images/img1-large.jpg 1200w',
+//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
+//     alt: 'Image 1',
+//     objectFit: 'cover',
+//   },
+//   {
+//     src: '/images/img2-large.jpg',
+//     srcSet: '/images/img2-small.jpg 480w, /images/img2-medium.jpg 800w, /images/img2-large.jpg 1200w',
+//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
+//     alt: 'Image 2',
+//     objectFit: 'cover',
+//   },
+//   {
+//     src: '/images/img3-large.jpg',
+//     srcSet: '/images/img3-small.jpg 480w, /images/img3-medium.jpg 800w, /images/img3-large.jpg 1200w',
+//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
+//     alt: 'Image 3',
+//     objectFit: 'cover',
+//   },
+//   {
+//     src: '/images/img4-large.jpg',
+//     srcSet: '/images/img4-small.jpg 480w, /images/img4-medium.jpg 800w, /images/img4-large.jpg 1200w',
+//     sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px',
+//     alt: 'Image 4',
+//     objectFit: 'cover',
+//   },
+// ];

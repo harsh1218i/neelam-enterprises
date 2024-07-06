@@ -1,6 +1,8 @@
+import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
+
 export default function CompanyInfo() {
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
             <div className="w-full flex max-sm:flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
                 <div className="basis-1/4">
                     <h1 className="text-2xl md:text-3xl font-bold my-2">Ashok Buildcon</h1>
@@ -23,6 +25,7 @@ export default function CompanyInfo() {
                 </div>
                 <div className="basis-1/4 sm:px-2">
                     <h4 className="text-2xl font-medium my-2">Social Media</h4>
+                    <SocialMediaLinks/>
                 </div>
             </div>
         </div>

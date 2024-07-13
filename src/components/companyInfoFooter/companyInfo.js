@@ -1,4 +1,5 @@
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
+// import style from "./CompanyInfo.module.scss"
 
 export default function CompanyInfo() {
     return (

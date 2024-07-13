@@ -29,7 +29,7 @@ const Header = () => {
     }
 
     return (
-        <header className='flex justify-center items-center dark:bg-gray-800'>
+        <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
             <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                 <div className="block w-full lg:flex md:justify-between">
                     <div className="flex justify-between items-center h-[56px]">
@@ -51,28 +51,28 @@ const Header = () => {
                         <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                             <li>
                                 <Link href="/" legacyBehavior>
-                                    <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
+                                    <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                         Home
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/about-us" legacyBehavior>
-                                    <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
+                                    <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                         About
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/services" legacyBehavior>
-                                    <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
+                                    <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                         Services
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/gallery" legacyBehavior>
-                                    <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:text-gray-200 dark:hover:border-indigo-600">
+                                    <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                         Gallery
                                     </a>
                                 </Link>

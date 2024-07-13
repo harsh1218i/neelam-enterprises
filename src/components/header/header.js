@@ -48,7 +48,7 @@ const Header = () => {
                         </div>
                     </div>
                     <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
-                        <ul className="lg:flex lg:justify-between text-base lg:pt-0">
+                        <ul className="flex lg:justify-between max-lg:flex-col text-base lg:pt-0">
                             <li>
                                 <Link href="/" legacyBehavior>
                                     <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">

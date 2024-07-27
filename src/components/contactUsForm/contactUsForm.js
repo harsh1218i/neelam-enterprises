@@ -7,6 +7,23 @@ const ContactUsForm = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const onSubmit = async (data) => {
+        console.log(data);
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+      
+          if (response.ok) {
+            alert('Form submitted successfully!');
+          } else {
+            alert('Failed to submit the form');
+          }
+    };
+
     const updateTheme = () => {
         const storedTheme = localStorage.getItem('theme');
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -31,10 +48,6 @@ const ContactUsForm = () => {
         };
     }, []);
 
-    const onSubmit = data => {
-        console.log(data);
-    };
-
     // const states = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
     // const cities = {
     //     "Select State": ["Select City"],
@@ -51,7 +64,7 @@ const ContactUsForm = () => {
         // } else {
         //     // Display error message
         // }
-        setForSubmit(true);
+        // setForSubmit(true);
     }
 
     return (
@@ -62,8 +75,8 @@ const ContactUsForm = () => {
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Join Us</h2>
                     <p className='py-2'>ABC is actively seeking new opportunities. We’d love to hear from you.</p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Address</h2>
-                    <p className='py-2'>133 Pearl Street, Suite 300 <br />Boston, MA 02110 <br />
-                        <a className='text-orange flex items-center' href="https://maps.app.goo.gl/R3NK78yeTTReqcAF9" target="blank">
+                    <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br/> Madhya Pradesh <br/>
+                        <a className='text-orange flex items-center max-w-fit' href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank">
                             Directions
                             <svg className='inline ml-1' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
                         </a>
@@ -89,24 +102,24 @@ const ContactUsForm = () => {
                                 {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
                             </div>
                             <div>
-                                {/* <label className="block text-sm font-medium text-gray-700 dark:text-white">Number</label> */}
+                                {/* <label className="block text-sm font-medium text-gray-700 dark:text-white">Phone Number</label> */}
                                 <input
                                     type="tel"
-                                    {...register("number", { required: true })}
+                                    {...register("phone", { required: true })}
                                     className="mt-1 p-2 border border-gray-300 rounded w-full dark:text-gray-700"
                                     placeholder='Phone Number*'
                                 />
-                                {errors.number && <p className="text-red-500 text-sm">Number is required</p>}
+                                {errors.phone && <p className="text-red-500 text-sm">Phone number is required</p>}
                             </div>
                             <div>
                                 {/* <label className="block text-sm font-medium text-gray-700 dark:text-white">Email</label> */}
                                 <input
                                     type="email"
-                                    // {...register("email", { required: true })}
+                                    {...register("email", { required: true })}
                                     className="mt-1 p-2 border border-gray-300 rounded w-full dark:text-gray-700"
                                     placeholder='Email'
                                 />
-                                {/* {errors.email && <p className="text-red-500 text-sm">Email is required</p>} */}
+                                {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
                             </div>
                             {/* <div>
                                 <label className="block text-sm font-medium text-gray-700">State</label>
@@ -143,7 +156,7 @@ const ContactUsForm = () => {
                                 ></textarea>
                                 {errors.message && <p className="text-red-500 text-sm">Message is required</p>}
                             </div>
-                            <button onClick={handleContactUsSubmit} type="submit" className="bg-orange text-white p-2 rounded">Submit</button>
+                            <button type="submit" className="bg-orange text-white p-2 rounded">Submit</button>
                         </form> :
                         <div className='flex flex-col items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#01bfa0"><path d="m421-298 283-283-46-45-237 237-120-120-45 45 165 166Zm59 218q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-60q142 0 241-99.5T820-480q0-142-99-241t-241-99q-141 0-240.5 99T140-480q0 141 99.5 240.5T480-140Zm0-340Z" /></svg>

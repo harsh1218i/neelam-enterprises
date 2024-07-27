@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import DarkModeToggleDropdown from './darkModeToggleDropdown';
 import { usePathname } from "next/navigation";
+import HeaderTop from './headerTop';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,65 +30,68 @@ const Header = () => {
     }
 
     return (
-        <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
-            <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
-                <div className="block w-full lg:flex md:justify-between">
-                    <div className="flex justify-between items-center h-[56px]">
-                        <div className="text-lg font-bold inline-block">
-                            <Link href="/" legacyBehavior>
-                                <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                    MyLogo
-                                </a>
-                            </Link>
-                        </div>
-                        <div className="flex lg:hidden items-center gap-3">
-                            <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
-                            <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
-                                {isOpen ? <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>}
+        <>
+            <HeaderTop />
+            <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
+                <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
+                    <div className="block w-full lg:flex md:justify-between">
+                        <div className="flex justify-between items-center h-[56px]">
+                            <div className="text-lg font-bold inline-block">
+                                <Link href="/" legacyBehavior>
+                                    <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
+                                        MyLogo
+                                    </a>
+                                </Link>
+                            </div>
+                            <div className="flex lg:hidden items-center gap-3">
+                                <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
+                                <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
+                                    {isOpen ? <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>}
+                                </div>
                             </div>
                         </div>
+                        <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
+                            <ul className="lg:flex lg:justify-between text-base lg:pt-0">
+                                <li>
+                                    <Link href="/" legacyBehavior>
+                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Home
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about-us" legacyBehavior>
+                                        <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            About
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/services" legacyBehavior>
+                                        <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Services
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/gallery" legacyBehavior>
+                                        <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Gallery
+                                        </a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
+                            <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
+                        </div>
                     </div>
-                    <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
-                        <ul className="lg:flex lg:justify-between text-base lg:pt-0">
-                            <li>
-                                <Link href="/" legacyBehavior>
-                                    <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                        Home
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/about-us" legacyBehavior>
-                                    <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                        About
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services" legacyBehavior>
-                                    <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                        Services
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/gallery" legacyBehavior>
-                                    <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                        Gallery
-                                    </a>
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
-                        <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
+                    <div className={`flex items-center pl-2 md:pl-4 h-[56px] ${isOpen ? 'py-3' : ''}`}>
+                        <DarkModeToggleDropdown />
                     </div>
                 </div>
-                <div className={`flex items-center pl-2 md:pl-4 h-[56px] ${isOpen ? 'py-3' : ''}`}>
-                    <DarkModeToggleDropdown />
-                </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 };
 

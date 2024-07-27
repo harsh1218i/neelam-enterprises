@@ -44,6 +44,7 @@ const DarkModeToggleDropdown = () => {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center text-white dark:bg-gray-200 rounded-full ring ring-orange ring-inset dark:focus:ring-offset-1"
+                aria-label='Header Dropdown Button'
             >
                 {!!isOpen ?
                     <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#f26621"><path d="m280-400 200-200 200 200H280Z" /></svg> :
@@ -62,6 +63,7 @@ const DarkModeToggleDropdown = () => {
                             <button
                                 onClick={toggleTheme}
                                 className={`relative inline-flex items-center h-6 rounded-full w-11 transition-colors duration-1000 focus:outline-none focus:ring-2 focus:ring-offset-2 ${theme === 'light' ? 'bg-gray-300 focus:ring-offset-gray-800 focus:ring-white' : 'bg-gray-700 focus:ring-gray-800'}`}
+                                aria-label='Dark Mode Toggle Button'
                             // data-tooltip-id='dark-mode-theme-toggle'
                             // data-tooltip-content={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
                             // data-tooltip-place='bottom-start'

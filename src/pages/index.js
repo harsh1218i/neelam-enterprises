@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header/>
-      <WebsiteCover comingFrom="home"/>
+      <WebsiteCover comingFrom="home" />
       <AboutUs/>
       <Services/>
       <Gallery/>

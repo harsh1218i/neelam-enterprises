@@ -1,6 +1,7 @@
 // src/pages/contact-us.js
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import options from '../utilities/contact-us';
 
 const ContactUsForm = () => {
     const [formSubmit, setForSubmit] = useState(false);
@@ -12,16 +13,16 @@ const ContactUsForm = () => {
         const response = await fetch('/api/contact', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
-          });
-      
-          if (response.ok) {
+        });
+
+        if (response.ok) {
             alert('Form submitted successfully!');
-          } else {
+        } else {
             alert('Failed to submit the form');
-          }
+        }
     };
 
     const updateTheme = () => {
@@ -75,7 +76,8 @@ const ContactUsForm = () => {
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Join Us</h2>
                     <p className='py-2'>ABC is actively seeking new opportunities. We’d love to hear from you.</p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Address</h2>
-                    <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br/> Madhya Pradesh <br/>
+                    {/* <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br /> Madhya Pradesh <br /> */}
+                    <p className='py-2'>{options.address} <br />Landmark: {options.landmark}<br /> {options.city} - {options.zip} <br /> {options.state} <br />
                         <a className='text-orange flex items-center max-w-fit' href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank">
                             Directions
                             <svg className='inline ml-1' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
@@ -85,7 +87,7 @@ const ContactUsForm = () => {
                     <p className='pt-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-8435272170</a></p>
                     <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-6268100277</a></p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
-                    <p className='py-2'><a className='text-orange' href="mailto:puneetdwevedi2@gmail.com">puneetdwevedi2@gmail.com</a></p>
+                    <p className='py-2'><a className='text-orange' href={`mailto:${options.email}`}>{options.email}</a></p>
                 </div>
                 <div className="flex w-full flex-col md:ml-5 md:basis-2/3">
                     {/* <h1 className="text-2xl font-bold mb-4">Contact Us</h1> */}

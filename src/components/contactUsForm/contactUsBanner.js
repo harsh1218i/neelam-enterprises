@@ -1,5 +1,6 @@
 "use client"
 import { usePathname } from "next/navigation";
+import options from "../utilities/contact-us";
 
 export default function ContactUsBanner() {
     const pathName = usePathname();
@@ -16,10 +17,10 @@ export default function ContactUsBanner() {
         <div className="w-full min-h-[100px] md:py-14 py-10 xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 flex flex-col justify-between sm:flex-row max-w-[1310px]">
             <div className="flex flex-col basis-4/5 sm:pb-0 text-white">
                 <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold">
-                    Contact Ashok Buildcon
+                    Contact {options.name}
                 </h2>
                 <p className="my-4 sm:mb-0">
-                    Ashok Buildcon is actively seeking new opportunities. We'd love to hear from you.
+                {options.name} is actively seeking new opportunities. We'd love to hear from you.
                 </p>
             </div>
             <div className="flex w-full justify-center sm:justify-end items-center basis-1/5 max-sm:mt-4">

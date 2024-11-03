@@ -1,6 +1,6 @@
 "use client"
 import { usePathname } from "next/navigation";
-import options from "../utilities/contact-us";
+import options from "../../utilities/contact-us";
 
 export default function ContactUsBanner() {
     const pathName = usePathname();

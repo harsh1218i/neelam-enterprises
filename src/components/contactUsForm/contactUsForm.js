@@ -9,6 +9,7 @@ const ContactUsForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
+        debugger
         console.log(data);
         const response = await fetch('/api/contact', {
             method: 'POST',
@@ -74,7 +75,7 @@ const ContactUsForm = () => {
             <div className="w-full flex justify-center items-center flex-col md:flex-row xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
                 <div className="w-full md:basis-1/3">
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Join Us</h2>
-                    <p className='py-2'>ABC is actively seeking new opportunities. We’d love to hear from you.</p>
+                    <p className='py-2'>{options.name} is actively seeking new opportunities. We’d love to hear from you.</p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Address</h2>
                     {/* <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br /> Madhya Pradesh <br /> */}
                     <p className='py-2'>{options.address} <br />Landmark: {options.landmark}<br /> {options.city} - {options.zip} <br /> {options.state} <br />
@@ -84,8 +85,8 @@ const ContactUsForm = () => {
                         </a>
                     </p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Phone</h2>
-                    <p className='pt-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-8435272170</a></p>
-                    <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-6268100277</a></p>
+                    {/* <p className='pt-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-8435272170</a></p> */}
+                    <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+917415939251">{options.phone}</a></p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
                     <p className='py-2'><a className='text-orange' href={`mailto:${options.email}`}>{options.email}</a></p>
                 </div>

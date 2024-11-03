@@ -4,7 +4,7 @@ import ContactUsBanner from "../components/contactUsForm/contactUsBanner";
 import Footer from "../components/footer/footer";
 import Gallery from "../components/gallery/gallery";
 import Header from "../components/header/header";
-import Services from "../components/services/services";
+import Services from "../components/servicess/services";
 import WebsiteCover from "../components/websiteCover/websiteCover";
 
 export default function Home() {

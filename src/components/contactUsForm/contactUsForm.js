@@ -1,7 +1,7 @@
 // src/pages/contact-us.js
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import options from '../utilities/contact-us';
+import options from '../../utilities/contact-us';
 
 const ContactUsForm = () => {
     const [formSubmit, setForSubmit] = useState(false);

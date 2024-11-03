@@ -1,5 +1,5 @@
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
-import options from "../../utilities/options";
+import options from "../../utilities/contact-us";
 // import style from "./CompanyInfo.module.scss"
 
 export default function CompanyInfo() {

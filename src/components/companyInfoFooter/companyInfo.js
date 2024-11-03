@@ -1,5 +1,5 @@
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
-import options from "../../utilities/contact-us";
+import options from "../../utilities/contact-us-options";
 // import style from "./CompanyInfo.module.scss"
 
 export default function CompanyInfo() {
@@ -12,7 +12,7 @@ export default function CompanyInfo() {
                 <div className="basis-1/4 sm:px-2">
                     <h4 className="text-2xl font-medium my-2">Address</h4>
                     {/* <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br/> Madhya Pradesh <br/> */}
-                    <p className='py-2'>{options.address} <br />Landmark: <br />{options.landmark}<br /> {options.city} - {options.zip} <br /> {options.state} <br />
+                    <p className='py-2'>{options.address} <br />Landmark: {options.landmark}<br /> {options.city} - {options.zip} <br /> {options.state} <br />
                         {/* <a className='text-orange flex items-center max-w-fit' href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank"> */}
                         <a className='text-orange flex items-center max-w-fit' href="https://maps.app.goo.gl/zKy5RRaZQW6td7ZXA" target="blank">
                             Directions

@@ -1,11 +1,10 @@
-// components/SocialMediaLinks.js
-
 import Link from 'next/link';
+import options from '../../utilities/contact-us-options';
 
 const socialMedia = [
     {
       name: 'Facebook',
-      url: 'https://facebook.com/yourprofile',
+      url: options.socialMedia.Facebook,
       icon: (
         <svg
           fill="#f26621"
@@ -19,7 +18,7 @@ const socialMedia = [
     },
     {
       name: 'Instagram',
-      url: 'https://instagram.com/yourprofile',
+      url: options.socialMedia.Instagram,
       icon: (
         <svg
           fill="#f26621"
@@ -33,7 +32,7 @@ const socialMedia = [
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourprofile',
+      url: options.socialMedia.LinkedIn,
       icon: (
         <svg
           fill="#f26621"
@@ -47,7 +46,7 @@ const socialMedia = [
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/yourprofile',
+      url: options.socialMedia.Twitter,
       icon: (
         <svg
           fill="#f26621"

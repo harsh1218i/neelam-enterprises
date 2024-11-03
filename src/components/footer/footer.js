@@ -1,5 +1,5 @@
 // import './footer.scss'
-import options from "../../utilities/contact-us";
+import options from "../../utilities/contact-us-options";
 export default function Footer() {
     return (
         <footer className="flex justify-center items-center text-sm text-footer-gray dark:text-gray-400 bg-gray-100 dark:bg-gray-900">

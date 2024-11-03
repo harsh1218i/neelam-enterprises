@@ -14,7 +14,9 @@ const Header = () => {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
-                setIsOpen(false);
+                setTimeout(() => {
+                    setIsOpen(false);
+                }, 0);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);

@@ -4,6 +4,7 @@ import CompanyInfo from "../components/companyInfoFooter/companyInfo";
 import WebsiteCover from "../components/websiteCover/websiteCover";
 import ContactUsForm from "../components/contactUsForm/contactUsForm";
 import ContactUsBanner from "../components/contactUsForm/contactUsBanner";
+import ScrollToTopButton from "../components/scrollToTopButton/scrollToTopButton";
 
 export default function ContactUsPage() {
     return (
@@ -14,6 +15,7 @@ export default function ContactUsPage() {
             <ContactUsBanner />
             <CompanyInfo />
             <Footer />
+            <ScrollToTopButton />
         </>
     );
 }

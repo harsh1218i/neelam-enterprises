@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../components/header/header';
 import CompanyInfo from '../components/companyInfoFooter/companyInfo';
 import Footer from '../components/footer/footer';
+import ScrollToTopButton from '../components/scrollToTopButton/scrollToTopButton';
 
 const Custom404 = () => {
     return (
@@ -16,6 +17,7 @@ const Custom404 = () => {
             </div>
             <CompanyInfo />
             <Footer />
+            <ScrollToTopButton />
         </>
     );
 };

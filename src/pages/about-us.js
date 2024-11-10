@@ -6,7 +6,7 @@ import Footer from "../components/footer/footer";
 export default function AboutUs() {
     return (
         <>
-            <Header></Header>
+            <Header />
             <div className="min-h-[80vh]">This is About Us section</div>
             <ContactUsBanner />
             <CompanyInfo />

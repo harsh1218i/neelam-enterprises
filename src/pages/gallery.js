@@ -6,7 +6,7 @@ import Footer from "../components/footer/footer";
 export default function Gallery() {
     return (
         <>
-            <Header></Header>
+            <Header />
             <div className="min-h-[80vh]">This is Gallery section</div>
             <ContactUsBanner />
             <CompanyInfo />

@@ -25,7 +25,7 @@ export default function CompanyInfo() {
                     <div className="flex flex-col"></div>
                     <p className='pt-2'>Phone No: <a className='text-orange' href={`tel:${options.phone}`}>{options.phone}</a></p>
                     {/* <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+916268100277">+91-6268100277</a></p> */}
-                    <p className='py-2'>Email: <a className='text-orange' href={`mailto:${options.email}`}>{options.email}</a></p>
+                    <p className='py-2'>Email: <a className='text-orange' href={`mailto:${options.company_email}`}>{options.company_email}</a></p>
                 </div>
                 <div className="basis-1/4 sm:px-2">
                     <h4 className="text-2xl font-medium my-2">Social Media</h4>

@@ -1,13 +1,16 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import DarkModeToggleDropdown from './darkModeToggleDropdown';
 import { usePathname } from "next/navigation";
-import HeaderTop from './headerTop';
+// import HeaderTop from './headerTop';
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false); // Main menu state
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state for "About"
     const hamBurgerRef = useRef(null);
+    const dropdownRef = useRef(null);
     const pathName = usePathname();
     const isContactUsPage = pathName.includes("/contact-us");
 
@@ -18,12 +21,17 @@ const Header = () => {
                     setIsOpen(false);
                 }, 0);
             }
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setTimeout(() => {
+                    setIsDropdownOpen(false);
+                }, 0);
+            }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [hamBurgerRef]);
+    }, [hamBurgerRef, dropdownRef]);
 
     const disableContactUs = (event) => {
         if (isContactUsPage) {
@@ -31,9 +39,14 @@ const Header = () => {
         }
     }
 
+    // Toggle dropdown for About section
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
         <>
-            <HeaderTop />
+            {/* <HeaderTop /> */}
             <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
                 <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">
@@ -41,7 +54,8 @@ const Header = () => {
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
                                     <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                        MyLogo
+                                        {/* <img alt='Logo' src='/favicon.ico' sizes=''/> */}
+                                        <Image alt='Logo' src='/favicon-16x16.png' width={70} height={70} />
                                     </a>
                                 </Link>
                             </div>
@@ -53,7 +67,7 @@ const Header = () => {
                             </div>
                         </div>
                         <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
-                            <ul className="lg:flex lg:justify-between text-base lg:pt-0">
+                            {/* <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
                                     <Link href="/" legacyBehavior>
                                         <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
@@ -78,6 +92,58 @@ const Header = () => {
                                 <li>
                                     <Link href="/gallery" legacyBehavior>
                                         <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Gallery
+                                        </a>
+                                    </Link>
+                                </li>
+                            </ul> */}
+                            <ul className="lg:flex lg:justify-between text-base lg:pt-0">
+                                <li>
+                                    <Link href="/" legacyBehavior>
+                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Home
+                                        </a>
+                                    </Link>
+                                </li>
+                                {/* About Dropdown */}
+                                <li className="relative" ref={dropdownRef}>
+                                    <button
+                                        onClick={toggleDropdown}
+                                        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200"
+                                    >
+                                        About
+                                    </button>
+                                    {/* Dropdown menu */}
+                                    {isDropdownOpen && (
+                                        <ul className="absolute bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg w-48">
+                                            <li>
+                                                <Link href="/portfolio" legacyBehavior>
+                                                    <a className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
+                                                        Personal Portfolio
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link href="/about-us" legacyBehavior>
+                                                    <a className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
+                                                        Company Info
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+
+                                <li>
+                                    <Link href="/services" legacyBehavior>
+                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                            Services
+                                        </a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/gallery" legacyBehavior>
+                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                             Gallery
                                         </a>
                                     </Link>

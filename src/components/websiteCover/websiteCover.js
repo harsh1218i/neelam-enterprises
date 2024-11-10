@@ -145,6 +145,7 @@ const WebsiteCover = ({ comingFrom }) => {
           <div className="relative bottom-4 h-0 flex space-x-2">
             {images.map((_, index) => (
               <button
+                aria-label={index}
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-blue-500" : "bg-white"

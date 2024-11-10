@@ -1,3 +1,4 @@
+import Head from "next/head";
 import AboutUs from "../components/about/about";
 import CompanyInfo from "../components/companyInfoFooter/companyInfo";
 import ContactUsBanner from "../components/contactUsForm/contactUsBanner";
@@ -6,18 +7,27 @@ import Gallery from "../components/gallery/gallery";
 import Header from "../components/header/header";
 import Services from "../components/servicess/services";
 import WebsiteCover from "../components/websiteCover/websiteCover";
+import ScrollToTopButton from "../components/scrollToTopButton/scrollToTopButton";
 
 export default function Home() {
   return (
     <>
-      <Header/>
-      <WebsiteCover comingFrom="home" />
-      <AboutUs/>
-      <Services/>
-      <Gallery/>
-      <ContactUsBanner/>
-      <CompanyInfo/>
-      <Footer/>
+      <Head>
+        <title>My Next.js Project - Best Products Online</title>
+        <meta name="description" content="Shop the best products online with amazing discounts on My Next.js Project." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <main>
+        <Header />
+        <WebsiteCover comingFrom="home" />
+        <AboutUs />
+        <Services />
+        <Gallery />
+        <ContactUsBanner />
+        <CompanyInfo />
+        <Footer />
+        <ScrollToTopButton />
+      </main>
     </>
   );
 }

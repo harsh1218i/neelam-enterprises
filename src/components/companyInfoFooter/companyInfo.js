@@ -10,7 +10,7 @@ export default function CompanyInfo() {
                     <h1 className="text-2xl md:text-3xl font-bold my-2">{options.name}</h1>
                 </div>
                 <div className="basis-1/4 sm:px-2">
-                    <h4 className="text-2xl font-medium my-2">Address</h4>
+                    <p className="text-2xl font-medium my-2">Address</p>
                     {/* <p className='py-2'>D-29, Govindpuri <br />Landmark: Irrigation Office<br /> Gwalior - 474001 <br/> Madhya Pradesh <br/> */}
                     <p className='py-2'>{options.address} <br />Landmark: {options.landmark}<br /> {options.city} - {options.zip} <br /> {options.state} <br />
                         {/* <a className='text-orange flex items-center max-w-fit' href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank"> */}
@@ -21,14 +21,14 @@ export default function CompanyInfo() {
                     </p>
                 </div>
                 <div className="basis-1/4 sm:px-2">
-                    <h4 className="text-2xl font-medium my-2">Contact Us</h4>
+                    <p className="text-2xl font-medium my-2">Contact Us</p>
                     <div className="flex flex-col"></div>
                     <p className='pt-2'>Phone No: <a className='text-orange' href={`tel:${options.phone}`}>{options.phone}</a></p>
                     {/* <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+916268100277">+91-6268100277</a></p> */}
                     <p className='py-2'>Email: <a className='text-orange' href={`mailto:${options.company_email}`}>{options.company_email}</a></p>
                 </div>
                 <div className="basis-1/4 sm:px-2">
-                    <h4 className="text-2xl font-medium my-2">Social Media</h4>
+                    <p className="text-2xl font-medium my-2">Social Media</p>
                     <SocialMediaLinks />
                 </div>
             </div>

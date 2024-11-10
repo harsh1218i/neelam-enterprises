@@ -31,7 +31,7 @@ const ScrollToTopButton = () => {
   return (
     isVisible && (
       <button
-        aria-label='scrollToTopButton'
+        aria-label='Scroll To Top'
         onClick={scrollToTop}
         className='fixed bottom-[50px] right-[50px] border-none rounded-full px-[15px] py-[10px] text-current bg-black dark:bg-white text-orange'
         style={{

@@ -33,10 +33,9 @@ const ScrollToTopButton = () => {
       <button
         aria-label='scrollToTopButton'
         onClick={scrollToTop}
-        className='fixed bottom-[50px] right-[50px] border-none rounded-full px-[15px] py-[10px] text-current'
+        className='fixed bottom-[50px] right-[50px] border-none rounded-full px-[15px] py-[10px] text-current bg-black dark:bg-white text-orange'
         style={{
-          backgroundColor: '#000',
-          color: '#fff',
+          // backgroundColor: '#000',
         }}
       >
         ↑

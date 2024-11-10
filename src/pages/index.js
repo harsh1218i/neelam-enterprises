@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Government Registered Contractor | PWD Tender Services</title>
+        <title>Neelam Enterprises: Government Registered Contractor | PWD, CPWD, Indian Railways and MES Tender Services</title>
         <meta name="description" content="Neelam Enterprises, a government-registered contractor, specializes in handling government tenders for PWD, CPWD, Indian Railways, and MES projects. Partner with us for reliable and professional contracting services." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

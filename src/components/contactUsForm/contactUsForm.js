@@ -88,7 +88,8 @@ const ContactUsForm = () => {
                     {/* <p className='pt-2'>Phone No: <a className='text-orange' href="tel:+917415939251">+91-8435272170</a></p> */}
                     <p className='pb-2'>Phone No: <a className='text-orange' href="tel:+917415939251">{options.phone}</a></p>
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
-                    <p className='py-2'><a className='text-orange' href={`mailto:${options.company_email}`}>{options.company_email}</a></p>
+                    <p className='pt-2'><a className='text-orange' href={`mailto:${options.company_email_domain}`}>{options.company_email_domain}</a></p>
+                    <p className='py-2'><a className='text-orange' href={`mailto:${options.company_email_gmail}`}>{options.company_email_gmail}</a></p>
                 </div>
                 <div className="flex w-full flex-col md:ml-5 md:basis-2/3">
                     {/* <h1 className="text-2xl font-bold mb-4">Contact Us</h1> */}

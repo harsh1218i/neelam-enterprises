@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion } from "framer-motion";
 import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import { usePathname } from "next/navigation";
@@ -123,35 +123,27 @@ const WebsiteCover = ({ comingFrom }) => {
             </>
           )}
           <div className="relative w-full h-[40vh] md:h-[65vh] lg:h-[80vh] xl:h-[95vh]">
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={current}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="absolute top-0 left-0 w-full h-full"
-              >
-                <Image
-                  src={images[current].src}
-                  alt={images[current].alt}
-                  layout="fill"
-                  objectFit="cover"
-                // className="rounded-lg"
-                />
-              </motion.div>
-            </AnimatePresence>
+            <div
+              key={current}
+              // animate={{ opacity: 1 }}
+              // exit={{ opacity: 0 }}
+              // initial={{ opacity: 0, y: 100 }} // Start invisible and off-screen
+              // whileInView={{ opacity: 1, y: 0 }} // Animate when it comes into view
+              // viewport={{ once: true }} // Animate only once when it first comes into view
+              // transition={{ duration: 1 }}
+              className="absolute top-0 left-0 w-full h-full"
+            >
+              <Image
+                src={images[current].src}
+                alt={images[current].alt}
+                layout="fill"
+                objectFit="cover"
+              />
+              {/* <video src="/images/Sample.mp4" autoPlay loop muted></video> */}
+            </div>
           </div>
           <div className="relative bottom-4 h-0 flex space-x-2">
-            {images.map((_, index) => (
-              <button
-                aria-label={index}
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-blue-500" : "bg-white"
-                  }`}
-              />
-            ))}
+            {images.map((_, index) => (<button aria-label={index} key={index} onClick={() => goToSlide(index)} className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-orange" : "bg-white"}`} />))}
           </div>
         </>
       )}

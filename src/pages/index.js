@@ -8,6 +8,7 @@ import Header from "../components/header/header";
 import Services from "../components/servicess/services";
 import WebsiteCover from "../components/websiteCover/websiteCover";
 import ScrollToTopButton from "../components/scrollToTopButton/scrollToTopButton";
+import AnimatedHeading from "../components/animatedHeading/animatedHeading";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <AboutUs />
         <Services />
         <Gallery />
+        <AnimatedHeading />
         <ContactUsBanner />
         <CompanyInfo />
         <Footer />

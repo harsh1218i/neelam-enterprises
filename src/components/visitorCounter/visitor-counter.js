@@ -7,7 +7,6 @@ export default function VisitorCounter() {
     async function fetchVisitCount() {
       try {
         const response = await fetch('/api/visitor-counter');
-        console.log(response, 'harsh')
         if (response.ok) {
           const data = await response.json();
           setVisitCount(data.count);

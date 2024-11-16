@@ -9,8 +9,6 @@ const ContactUsForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
-        debugger
-        console.log(data);
         const response = await fetch('/api/contact', {
             method: 'POST',
             headers: {
@@ -71,7 +69,6 @@ const ContactUsForm = () => {
 
     return (
         <div className={`flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12 ${!isDarkMode ? 'contact-us-banner' : ''}`}>
-            {console.log(isDarkMode, 'isDarkMode')}
             <div className="w-full flex justify-center items-center flex-col md:flex-row xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
                 <div className="w-full md:basis-1/3">
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Join Us</h2>

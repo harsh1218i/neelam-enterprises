@@ -1,28 +1,30 @@
 import { useEffect, useState } from 'react';
 
-function VisitorCounter() {
-    const [visitCount, setVisitCount] = useState(null);
+export default function VisitorCounter() {
+  const [visitCount, setVisitCount] = useState(null);
 
-    useEffect(() => {
-        // Fetch visitor count from the API route
-        const fetchCount = async () => {
-            try {
-                const response = await fetch('/api/visitor-counter');
-                const data = await response.json();
-                setVisitCount(data.count);
-            } catch (error) {
-                console.error('Error fetching visitor count:', error);
-            }
-        };
+  useEffect(() => {
+    async function fetchVisitCount() {
+      try {
+        const response = await fetch('/api/visitor-counter');
+        console.log(response, 'harsh')
+        if (response.ok) {
+          const data = await response.json();
+          setVisitCount(data.count);
+        } else {
+          console.error('Failed to fetch visit count');
+        }
+      } catch (error) {
+        console.error('Error fetching visit count:', error);
+      }
+    }
 
-        fetchCount();
-    }, []); // Empty dependency array to run only on the first render
+    fetchVisitCount();
+  }, []);
 
-    return (
-        <div>
-            <h1>You are Visitor No: {visitCount !== null ? visitCount : 'Loading...'}</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>You are Visitor No: {visitCount !== null ? visitCount : 'Loading...'}</h1>
+    </div>
+  );
 }
-
-export default VisitorCounter;

@@ -8,9 +8,9 @@ export default function AnimatedHeading() {
     // viewport={{ once: true }} // Animate only once when it first comes into view
     // transition={{ duration: 1 }}
     >
-      Welcome to My Next.js Project!
+      {/* Welcome to My Next.js Project!
       <h2>Scroll-triggered Animation!</h2>
-      <p>This element will animate as you scroll to it.</p>
+      <p>This element will animate as you scroll to it.</p> */}
     </div>
   );
 }

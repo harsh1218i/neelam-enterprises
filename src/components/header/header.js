@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import DarkModeToggleDropdown from './darkModeToggleDropdown';
 import { usePathname } from "next/navigation";
-// import HeaderTop from './headerTop';
+import HeaderTop from './headerTop';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false); // Main menu state
@@ -46,7 +46,7 @@ const Header = () => {
 
     return (
         <>
-            {/* <HeaderTop /> */}
+            <HeaderTop />
             <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
                 <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">

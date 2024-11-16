@@ -1,6 +1,8 @@
 // components/DropdownMenu.js
 
 import { useState, useEffect, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 // import { motion } from 'framer-motion';
 
 const DarkModeToggleDropdown = () => {
@@ -31,6 +33,14 @@ const DarkModeToggleDropdown = () => {
         }
     }, []);
 
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,  // Increase animation duration
+            easing: 'ease-in-out',
+            once: true,     // Animation will occur every time the element is scrolled into view
+        });
+    }, []);
+
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
@@ -54,11 +64,11 @@ const DarkModeToggleDropdown = () => {
             </button>
             {isOpen && (
                 <div className="absolute right-0 mt-3 w-60 bg-white rounded-md shadow-lg py-1 z-20">
-                    <div className="p-2 lg:px-4 text-gray-800 flex justify-between items-center"
-                        // initial={{ opacity: 0, y: 20 }} // Start invisible and off-screen
-                        // whileInView={{ opacity: 1, y: 0 }} // Animate when it comes into view
-                        // viewport={{ once: true }} // Animate only once when it first comes into view
-                        // transition={{ duration: 0.75 }}
+                    <div data-aos="fade" className="p-2 lg:px-4 text-gray-800 flex justify-between items-center"
+                    // initial={{ opacity: 0, y: 20 }} // Start invisible and off-screen
+                    // whileInView={{ opacity: 1, y: 0 }} // Animate when it comes into view
+                    // viewport={{ once: true }} // Animate only once when it first comes into view
+                    // transition={{ duration: 0.75 }}
                     >
                         <div className='flex items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" /></svg>

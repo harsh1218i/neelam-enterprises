@@ -17,7 +17,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.52.0",
     "react-swipeable": "^7.0.1",
-    "sass": "^1.77.5"
+    "sass": "^1.77.5",
+    "twilio": "^5.3.6"
   },
   "devDependencies": {
     "@types/node": "20.14.7",

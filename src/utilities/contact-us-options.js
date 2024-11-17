@@ -12,7 +12,7 @@ const options = {
     "personal_email": "chauhanharshvardhansingh4@gmail.com",
     // "phone": "+91-7415939251",
     "phone": "+91-9821646538",
-    "website": "abc.com",
+    "website": "neelam-enterprises.org",
     "gst": "23BDZPC1639L2Z6",
     "socialMedia": {
         "Facebook": "https://www.facebook.com/HarshChauhan1810/",

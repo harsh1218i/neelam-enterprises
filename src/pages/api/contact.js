@@ -1,6 +1,5 @@
 import dbConnect from '../../lib/dbConnect';
 import FormSubmission from '../../lib/formSchema';
-// import twilio from 'twilio';
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -27,19 +26,6 @@ export default async function handler(req, res) {
             });
 
             await newFormSubmission.save(); // Save form data
-            // console.log('Form submission saved successfully.');
-
-            // Integrate Twilio to send notification
-            // const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-
-            // Replace 'your-mobile-number' with your actual phone number in international format, e.g., +1234567890
-            // await client.messages.create({
-            //     body: `New form submission:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message || 'N/A'}`,
-            //     from: process.env.TWILIO_PHONE_NUMBER, // Your Twilio phone number
-            //     to: 'your-mobile-number' // Your phone number
-            // });
-
-            // console.log('Notification sent successfully.');
 
             return res.status(200).json({ message: 'Form submission successful!' });
         } catch (error) {

@@ -74,7 +74,7 @@ const ContactUsForm = () => {
                     </p>
 
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Phone</h2>
-                    <p className="pb-2">Phone No: <a className="text-orange" href="tel:+917415939251">{options.phone}</a></p>
+                    <p className="pb-2">Phone No: <a className="text-orange" href={`tel:${options.phone}`}>{options.phone}</a></p>
 
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
                     <p className="pt-2">

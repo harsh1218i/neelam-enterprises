@@ -14,6 +14,29 @@ const Header = () => {
     const pathName = usePathname();
     const isContactUsPage = pathName.includes("/contact-us");
 
+    // 👇 Scroll lock logic
+    useEffect(() => {
+        const preventScroll = (e) => {
+            e.preventDefault();
+        };
+
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.height = '100vh';
+            document.body.addEventListener('touchmove', preventScroll, { passive: false });
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.height = '';
+            document.body.removeEventListener('touchmove', preventScroll);
+        }
+
+        return () => {
+            document.body.removeEventListener('touchmove', preventScroll);
+            document.body.style.overflow = '';
+            document.body.style.height = '';
+        };
+    }, [isOpen]);
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {

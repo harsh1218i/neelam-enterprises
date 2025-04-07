@@ -74,8 +74,10 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       {/* <AnimatePresence mode='wait'> */}
-        {/* Main Component */}
+      {/* Main Component */}
+      <div id="app-wrapper">
         <Component {...pageProps} />
+      </div>
       {/* </AnimatePresence> */}
     </>
   );

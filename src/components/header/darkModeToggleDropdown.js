@@ -11,6 +11,28 @@ const DarkModeToggleDropdown = () => {
     const dropdownRef = useRef(null);
 
     useEffect(() => {
+        const preventScroll = (e) => {
+          e.preventDefault();
+        };
+      
+        if (isOpen) {
+          document.body.style.overflow = 'hidden';
+          document.body.style.height = '100vh';
+          document.body.addEventListener('touchmove', preventScroll, { passive: false });
+        } else {
+          document.body.style.overflow = '';
+          document.body.style.height = '';
+          document.body.removeEventListener('touchmove', preventScroll);
+        }
+      
+        return () => {
+          document.body.removeEventListener('touchmove', preventScroll);
+          document.body.style.overflow = '';
+          document.body.style.height = '';
+        };
+      }, [isOpen]);
+
+    useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);

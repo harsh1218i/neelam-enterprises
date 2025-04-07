@@ -66,7 +66,7 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center lg:w-auto bg-white dark:bg-gray-800 lg:h-[56px] rounded`}>
+                        <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center bg-white dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
                             {/* <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
                                     <Link href="/" legacyBehavior>

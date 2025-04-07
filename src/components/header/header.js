@@ -48,14 +48,14 @@ const Header = () => {
         <>
             <HeaderTop />
             <header className='flex justify-center items-center bg-white dark:bg-gray-800 sticky z-10 top-0'>
-                <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
+                <div className={`w-full sticky flex justify-between top-0 z-[101] bg-white dark:bg-gray-800 h-[56px] xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">
                         <div className="flex justify-between items-center h-[56px]">
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
                                     <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
                                         {/* <img alt='Logo' src='/favicon.ico' sizes=''/> */}
-                                        <Image alt='Logo' src='/favicon-16x16.png' width={70} height={70} />
+                                        <Image alt='Logo' src='/favicon-16x16.png' width={67} height={60} />
                                     </a>
                                 </Link>
                             </div>

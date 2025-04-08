@@ -9,6 +9,7 @@ import HeaderTop from './headerTop';
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false); // Main menu state
     const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state for "About"
+    const [isMobileView, setIsMobileView] = useState(false);
     const hamBurgerRef = useRef(null);
     const dropdownRef = useRef(null);
     const pathName = usePathname();
@@ -16,10 +17,7 @@ const Header = () => {
 
     // 👇 Scroll lock logic
     useEffect(() => {
-        const preventScroll = (e) => {
-            e.preventDefault();
-        };
-
+        const preventScroll = (e) => e.preventDefault();
         if (isOpen) {
             document.body.style.overflow = 'hidden';
             document.body.style.height = '100vh';
@@ -29,7 +27,6 @@ const Header = () => {
             document.body.style.height = '';
             document.body.removeEventListener('touchmove', preventScroll);
         }
-
         return () => {
             document.body.removeEventListener('touchmove', preventScroll);
             document.body.style.overflow = '';
@@ -38,33 +35,37 @@ const Header = () => {
     }, [isOpen]);
 
     useEffect(() => {
+        const handleResize = () => {
+            setIsMobileView(window.innerWidth < 1024);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
         const handleClickOutside = (event) => {
-            if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
-                setTimeout(() => {
-                    setIsOpen(false);
-                }, 0);
+            if (window.innerWidth >= 1024 && hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
+                setTimeout(() => setIsOpen(false), 0);
             }
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setTimeout(() => {
-                    setIsDropdownOpen(false);
-                }, 0);
+                setTimeout(() => setIsDropdownOpen(false), 0);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [hamBurgerRef, dropdownRef]);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const disableContactUs = (event) => {
         if (isContactUsPage) {
             event.preventDefault();
         }
-    }
+    };
 
     // Toggle dropdown for About section
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
+    const toggleDropdown = (e) => {
+        e.stopPropagation();
+        setIsDropdownOpen(prev => !prev);
     };
 
     return (
@@ -77,7 +78,6 @@ const Header = () => {
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
                                     <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                        {/* <img alt='Logo' src='/favicon.ico' sizes=''/> */}
                                         <Image alt='Logo' src='/favicon-16x16.png' width={67} height={60} />
                                     </a>
                                 </Link>
@@ -85,70 +85,37 @@ const Header = () => {
                             <div className="flex lg:hidden items-center gap-3">
                                 <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
                                 <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
-                                    {isOpen ? <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>}
+                                    {isOpen ? (
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
+                                    ) : (
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>
+                                    )}
                                 </div>
                             </div>
                         </div>
                         <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center bg-white dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
-                            {/* <ul className="lg:flex lg:justify-between text-base lg:pt-0">
-                                <li>
-                                    <Link href="/" legacyBehavior>
-                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Home
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/about-us" legacyBehavior>
-                                        <a href='/about-us' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            About
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/services" legacyBehavior>
-                                        <a href='/services' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Services
-                                        </a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/gallery" legacyBehavior>
-                                        <a href='/gallery' className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Gallery
-                                        </a>
-                                    </Link>
-                                </li>
-                            </ul> */}
                             <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
                                     <Link href="/" legacyBehavior>
-                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Home
-                                        </a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Home</a>
                                     </Link>
                                 </li>
                                 {/* About Dropdown */}
                                 <li className="relative" ref={dropdownRef}>
-                                    <button
-                                        onClick={toggleDropdown}
-                                        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200"
-                                    >
-                                        About
-                                    </button>
+                                    <button onClick={toggleDropdown} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">About</button>
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (
-                                        <ul className="absolute bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg w-48">
+                                        <ul className={`${isMobileView ? 'block' : 'absolute w-48'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
                                             <li>
                                                 <Link href="/portfolio" legacyBehavior>
-                                                    <a className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
                                                         Personal Portfolio
                                                     </a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/about-us" legacyBehavior>
-                                                    <a className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
                                                         Company Info
                                                     </a>
                                                 </Link>
@@ -159,14 +126,14 @@ const Header = () => {
 
                                 <li>
                                     <Link href="/services" legacyBehavior>
-                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                             Services
                                         </a>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href="/gallery" legacyBehavior>
-                                        <a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
                                             Gallery
                                         </a>
                                     </Link>

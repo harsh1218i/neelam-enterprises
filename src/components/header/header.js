@@ -56,6 +56,16 @@ const Header = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // 👇 Listen for DarkModeToggleDropdown open event and close hamburger if needed
+    useEffect(() => {
+        console.log('harsh')
+        const handleDarkModeOpen = () => {
+            setIsOpen(false);
+        };
+        window.addEventListener('darkModeDropdownOpened', handleDarkModeOpen);
+        return () => window.removeEventListener('darkModeDropdownOpened', handleDarkModeOpen);
+    }, []);
+
     const disableContactUs = (event) => {
         if (isContactUsPage) {
             event.preventDefault();
@@ -84,7 +94,11 @@ const Header = () => {
                             </div>
                             <div className="flex lg:hidden items-center gap-3">
                                 <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
-                                <div onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
+                                <div onClick={() => {
+                                    setIsOpen(!isOpen);
+                                    // 👇 Dispatch custom event to close dropdown
+                                    window.dispatchEvent(new Event('hamburgerToggled'));
+                                }} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
                                     {isOpen ? (
                                         <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                                     ) : (

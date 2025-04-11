@@ -14,6 +14,7 @@ module.exports = {
     './src/app/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
+    "shadow-3xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

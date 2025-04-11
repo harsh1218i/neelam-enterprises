@@ -6,26 +6,10 @@ import { useSwipeable } from "react-swipeable";
 import { usePathname } from "next/navigation";
 
 const images = [
-  {
-    src: "/images/img1.jpg",
-    alt: "Image 1",
-    objectFit: "cover",
-  },
-  {
-    src: "/images/img2.jpg",
-    alt: "Image 2",
-    objectFit: "cover",
-  },
-  {
-    src: "/images/img3.jpg",
-    alt: "Image 3",
-    objectFit: "cover",
-  },
-  {
-    src: "/images/img4.jpg",
-    alt: "Image 4",
-    objectFit: "cover",
-  },
+  { src: "/images/img1.jpg", alt: "Image 1", objectFit: "cover", },
+  { src: "/images/img2.jpg", alt: "Image 2", objectFit: "cover", },
+  { src: "/images/img3.jpg", alt: "Image 3", objectFit: "cover", },
+  { src: "/images/img4.jpg", alt: "Image 4", objectFit: "cover", },
 ];
 
 const WebsiteCover = ({ comingFrom }) => {
@@ -37,9 +21,7 @@ const WebsiteCover = ({ comingFrom }) => {
   const pathName = usePathname();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));
-    }, 8000); // Change image every 8 seconds
+    const interval = setInterval(() => {setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1));}, 8000); // Change image every 8 seconds
     return () => clearInterval(interval);
   }, [length]);
 
@@ -55,12 +37,8 @@ const WebsiteCover = ({ comingFrom }) => {
       const newOpacity = Math.max(1 - scrollTop / maxScroll, 0.2);
       setOpacity(newOpacity);
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => {window.removeEventListener("scroll", handleScroll);};
   }, []);
 
   const nextSlide = () => {
@@ -99,50 +77,34 @@ const WebsiteCover = ({ comingFrom }) => {
   }
 
   return (
-    <div
-      {...handlers}
-      style={{ opacity: opacity, transition: "opacity 0.5s ease" }}
-      className={`flex flex-col justify-center items-center w-full bg-gray-900 ${pathName.includes("/contact-us") ? "main-website-cover bg-custom-2xl bg-custom-xl bg-custom-lg bg-custom-md bg-custom-sm bg-custom-ssm" : ""}`}
-    >
+    <div {...handlers} style={{ opacity: opacity, transition: "opacity 0.5s ease" }} className={`relative w-full overflow-hidden ${pathName.includes("/contact-us") ? "main-website-cover bg-custom-2xl bg-custom-xl bg-custom-lg bg-custom-md bg-custom-sm bg-custom-ssm" : ""}`}>
       {pathName.includes("/contact-us") ? null : (
         <>
-          {!isTouchDevice && (
-            <>
-              <button
-                onClick={prevSlide}
-                className="absolute left-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
-              >
-                &#10094;
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-0 text-5xl text-white z-10 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition"
-              >
-                &#10095;
-              </button>
-            </>
-          )}
-          <div className="relative w-full h-[40vh] md:h-[65vh] lg:h-[80vh] xl:h-[95vh]">
-            <div
-              key={current}
-              // animate={{ opacity: 1 }}
-              // exit={{ opacity: 0 }}
-              // initial={{ opacity: 0, y: 100 }} // Start invisible and off-screen
-              // whileInView={{ opacity: 1, y: 0 }} // Animate when it comes into view
-              // viewport={{ once: true }} // Animate only once when it first comes into view
-              // transition={{ duration: 1 }}
-              className="absolute top-0 left-0 w-full h-full"
-            >
-              <Image
-                src={images[current].src}
-                alt={images[current].alt}
-                layout="fill"
-                objectFit="cover"
-              />
+          {/* Image + Text Section */}
+          <div className="relative w-full h-[40vh] md:h-[65vh] lg:h-[80vh] xl:h-[95vh] flex items-center justify-center text-center">
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+            {/* Background Image */}
+            <div key={current} className="absolute top-0 left-0 w-full h-full z-0">
+              <Image src={images[current].src} alt={images[current].alt} layout="fill" objectFit="cover" />
               {/* <video src="/images/Sample.mp4" autoPlay loop muted></video> */}
             </div>
+            {/* Overlay Text */}
+            <div className="z-20 px-4">
+              <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">Neelam Enterprises</h1>
+              <p className="text-md md:text-xl text-white drop-shadow-md mt-2">Government-Registered Contractor in Madhya Pradesh</p>
+              <p className="text-md md:text-xl text-white drop-shadow-md">PWD | CPWD | Indian Railways | MES Tender Execution</p>
+            </div>
           </div>
-          <div className="relative bottom-4 h-0 flex space-x-2">
+          {/* Slide navigation arrows (only on non-touch devices) */}
+          {!isTouchDevice && (
+            <>
+              <button onClick={prevSlide} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl z-30 bg-black bg-opacity-40 hover:bg-opacity-60 rounded-full p-2 transition">&#10094;</button>
+              <button onClick={nextSlide} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl z-30 bg-black bg-opacity-40 hover:bg-opacity-60 rounded-full p-2 transition">&#10095;</button>
+            </>
+          )}
+          {/* Dot indicators */}
+          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
             {images.map((_, index) => (<button aria-label={index} key={index} onClick={() => goToSlide(index)} className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-orange" : "bg-white"}`} />))}
           </div>
         </>

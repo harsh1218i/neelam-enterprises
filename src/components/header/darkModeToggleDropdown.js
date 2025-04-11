@@ -9,12 +9,11 @@ const DarkModeToggleDropdown = () => {
     const [theme, setTheme] = useState('light');
     const dropdownRef = useRef(null);
 
-    // To prevent scrolling while mode change dorpdown is open
+    // To prevent scrolling while mode change dropdown is open
     // useEffect(() => {
     //     const preventScroll = (e) => {
     //         e.preventDefault();
     //     };
-
     //     if (isOpen) {
     //         document.body.style.overflow = 'hidden';
     //         document.body.style.height = '100vh';
@@ -24,7 +23,6 @@ const DarkModeToggleDropdown = () => {
     //         document.body.style.height = '';
     //         document.body.removeEventListener('touchmove', preventScroll);
     //     }
-
     //     return () => {
     //         document.body.removeEventListener('touchmove', preventScroll);
     //         document.body.style.overflow = '';
@@ -98,7 +96,7 @@ const DarkModeToggleDropdown = () => {
             </button>
             {isOpen && (
                 <>
-                    <div className='absolute right-0 mt-4 min-w-52 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-20 border-2 border-black dark:border-white'>
+                    {/* <div className='absolute right-0 mt-4 min-w-52 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-20 border-2 border-black dark:border-white'>
                         <div data-aos="fade" className="p-2 flex justify-between items-center">
                             <div className='flex items-center'>
                                 {theme === 'light' ?
@@ -114,6 +112,7 @@ const DarkModeToggleDropdown = () => {
                                 </button>
                             </div>
                         </div>
+                    </div> */}
                         <div className='absolute right-0 mt-4 max-sm:w-[80vw] sm:min-w-96 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-20 border-2 border-black dark:border-white'>
                             <div data-aos="fade" className="p-2 flex justify-between items-center">
                                 <div className='flex items-center'>
@@ -131,7 +130,6 @@ const DarkModeToggleDropdown = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </>
             )}
         </div>

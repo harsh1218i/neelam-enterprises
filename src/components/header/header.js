@@ -45,7 +45,7 @@ const Header = () => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (window.innerWidth >= 1024 && hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
+            if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target) && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setTimeout(() => setIsOpen(false), 0);
             }
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -81,7 +81,7 @@ const Header = () => {
     return (
         <>
             <HeaderTop />
-            <header className='flex justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky z-10 top-0'>
+            <header className='flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0'>
                 <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">
                         <div className="flex justify-between items-center h-[56px]">
@@ -107,7 +107,7 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <nav className={`${isOpen ? 'flex' : 'hidden'} px-4 lg:flex lg:items-center bg-gray-200 dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
+                        <nav className={`${isOpen ? 'flex' : 'hidden'} z-50 px-4 lg:flex lg:items-center bg-gray-200 dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
                             <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
                                     <Link href="/" legacyBehavior>
@@ -122,41 +122,30 @@ const Header = () => {
                                         <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
                                             <li>
                                                 <Link href="/portfolio" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
-                                                        Personal Portfolio
-                                                    </a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Personal Portfolio</a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/about-us" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
-                                                        Company Info
-                                                    </a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Company Info</a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/certifications" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">
-                                                    Certifications & Licenses
-                                                    </a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>
                                                 </Link>
                                             </li>
                                         </ul>
                                     )}
                                 </li>
-
                                 <li>
                                     <Link href="/services" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Services
-                                        </a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Services</a>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href="/gallery" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">
-                                            Gallery
-                                        </a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Gallery</a>
                                     </Link>
                                 </li>
                             </ul>

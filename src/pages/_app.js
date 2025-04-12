@@ -4,6 +4,7 @@ import '../components/contactUsForm/contactUs.scss';
 import '../components/header/header.scss';
 import '../components/footer/footer.scss';
 import '../components/websiteCover/websiteCover.scss';
+import '../components/about/about.scss';
 import { useEffect } from 'react';
 import Router from 'next/router';
 import NProgress from 'nprogress';

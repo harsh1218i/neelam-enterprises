@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // corePlugins: {
-  //   preflight: false,
-  // },
+  corePlugins: {
+    preflight: true,
+  },
   darkMode: 'class', // or 'media'
   lightMode: 'class',
   content: [
-    // "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    // "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
     './src/app/**/*.{js,jsx,ts,tsx}',
@@ -22,7 +19,6 @@ module.exports = {
       },
       colors: {
         'orange': '#f26621',
-        // 'orange': '#644c35',
         'footer-gray': '#797979',
       },
     },

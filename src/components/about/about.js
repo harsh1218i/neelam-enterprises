@@ -45,8 +45,8 @@ export default function AboutUs() {
                     </p>
 
                     <div className="mt-6">
-                        <a href="/about/company" className="text-blue-600 hover:underline font-medium">
-                            Learn More About Our Journey →
+                        <a href="/about/company" className="text-orange hover:underline font-medium">
+                            Read More About Our Journey →
                         </a>
                     </div>
                 </div>

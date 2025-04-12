@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import "../globals.css";
 import '../components/companyInfoFooter/companyInfo.scss';
 import '../components/contactUsForm/contactUs.scss';
@@ -5,7 +6,8 @@ import '../components/header/header.scss';
 import '../components/footer/footer.scss';
 import '../components/websiteCover/websiteCover.scss';
 import '../components/about/about.scss';
-import { useEffect } from 'react';
+import '../components/introOverlay/introOverlay.scss';
+import IntroOverlay from "../components/introOverlay/introOverlay";
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -30,10 +32,18 @@ const handleRouteChangeError = () => {
 };
 
 export default function App({ Component, pageProps }) {
+  const [showIntro, setShowIntro] = useState(false);
+
   useEffect(() => {
     Router.events.on('routeChangeStart', handleRouteChangeStart);
     Router.events.on('routeChangeComplete', handleRouteChangeComplete);
     Router.events.on('routeChangeError', handleRouteChangeError);
+
+    // Show intro only on first visit
+    const alreadySeen = localStorage.getItem('introSeen');
+    if (!alreadySeen) {
+      setShowIntro(true);
+    }
 
     return () => {
       Router.events.off('routeChangeStart', handleRouteChangeStart);
@@ -41,6 +51,11 @@ export default function App({ Component, pageProps }) {
       Router.events.off('routeChangeError', handleRouteChangeError);
     };
   }, []);
+
+  const handleIntroFinish = () => {
+    localStorage.setItem('introSeen', 'true');
+    setShowIntro(false);
+  };
 
   // const { scrollYProgress } = useScroll();
 
@@ -76,9 +91,13 @@ export default function App({ Component, pageProps }) {
       </Head>
       {/* <AnimatePresence mode='wait'> */}
       {/* Main Component */}
-      <div id="app-wrapper">
-        <Component {...pageProps} />
-      </div>
+      {showIntro ? (
+        <IntroOverlay onContinue={handleIntroFinish} />
+      ) : (
+        <div id="app-wrapper">
+          <Component {...pageProps} />
+        </div>
+      )}
       {/* </AnimatePresence> */}
     </>
   );

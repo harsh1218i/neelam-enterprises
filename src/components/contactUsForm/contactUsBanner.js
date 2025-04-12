@@ -13,7 +13,7 @@ export default function ContactUsBanner() {
     }
 
     return (
-        <div className="flex justify-center items-center bg-orange">
+        <div className="flex justify-center items-center bg-orangee">
         <div className="w-full min-h-[100px] md:py-14 py-10 xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 flex flex-col justify-between sm:flex-row max-w-[1310px]">
             <div className="flex flex-col basis-4/5 sm:pb-0 text-white">
                 <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold">

@@ -95,10 +95,10 @@ const WebsiteCover = ({ comingFrom }) => {
               <p className="text-md md:text-xl text-white drop-shadow-md mt-2">Government-Registered Contractor in Madhya Pradesh</p>
               <p className="text-md md:text-xl text-white drop-shadow-md">Specializing in PWD, CPWD, Indian Railways, and MES Tender Execution</p>
             <div className="flex justify-center mt-6 gap-4">
-              <a href="/services" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+              <a href="/services" className="bg-orangee hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded">
                 View Services
               </a>
-              <a href="/contact-us" className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded">
+              <a href="/contact-us" className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 text-gray-800 font-semibold py-2 px-4 rounded">
                 Contact Us
               </a>
             </div>
@@ -113,7 +113,7 @@ const WebsiteCover = ({ comingFrom }) => {
           )}
           {/* Dot indicators */}
           <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
-            {images.map((_, index) => (<button aria-label={index} key={index} onClick={() => goToSlide(index)} className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-orange" : "bg-white"}`} />))}
+            {images.map((_, index) => (<button aria-label={index} key={index} onClick={() => goToSlide(index)} className={`h-3 w-3 rounded-full transition-colors ${index === current ? "bg-orangee" : "bg-white"}`} />))}
           </div>
         </>
       )}

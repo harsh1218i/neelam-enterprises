@@ -65,7 +65,7 @@ const ContactUsForm = () => {
                         Landmark: {options.landmark} <br />
                         {options.city} - {options.zip} <br />
                         {options.state} <br />
-                        <a className="text-orange flex items-center max-w-fit" href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank">
+                        <a className="text-orangee flex items-center max-w-fit" href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank">
                             Directions
                             <svg className="inline ml-1" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621">
                                 <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
@@ -74,14 +74,14 @@ const ContactUsForm = () => {
                     </p>
 
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Phone</h2>
-                    <p className="pb-2">Phone No: <a className="text-orange" href={`tel:${options.phone}`}>{options.phone}</a></p>
+                    <p className="pb-2">Phone No: <a className="text-orangee" href={`tel:${options.phone}`}>{options.phone}</a></p>
 
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
                     <p className="pt-2">
-                        <a className="text-orange" href={`mailto:${options.company_email_domain}`}>{options.company_email_domain}</a>
+                        <a className="text-orangee" href={`mailto:${options.company_email_domain}`}>{options.company_email_domain}</a>
                     </p>
                     <p className="py-2">
-                        <a className="text-orange" href={`mailto:${options.company_email_gmail}`}>{options.company_email_gmail}</a>
+                        <a className="text-orangee" href={`mailto:${options.company_email_gmail}`}>{options.company_email_gmail}</a>
                     </p>
                 </div>
 
@@ -158,7 +158,7 @@ const ContactUsForm = () => {
                                 ></textarea>
                                 {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
                             </div>
-                            <button type="submit" className="bg-orange text-white p-2 rounded">
+                            <button type="submit" className="bg-orangee text-white p-2 rounded">
                                 Submit
                             </button>
                         </form>

@@ -86,7 +86,7 @@ const DarkModeToggleDropdown = () => {
                     // 👇 Dispatch custom event to close hamburger if this is opening
                     if (!isOpen) window.dispatchEvent(new Event('darkModeDropdownOpened'));
                 }}
-                className="flex items-center text-white dark:bg-gray-200 rounded-full ring ring-orange ring-inset dark:focus:ring-offset-1"
+                className="flex items-center text-white dark:bg-gray-200 rounded-full ring ring-orangee hover:ring-orange-400 ring-inset dark:focus:ring-offset-1"
                 aria-label='Header Dropdown Button'
             >
                 {!!isOpen ?

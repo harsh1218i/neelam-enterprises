@@ -93,7 +93,7 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className="flex lg:hidden items-center gap-3">
-                                <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
+                                <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orangee h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
                                 <div onClick={() => {
                                     setIsOpen(!isOpen);
                                     // 👇 Dispatch custom event to close dropdown
@@ -111,28 +111,28 @@ const Header = () => {
                             <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
                                     <Link href="/" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Home</a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Home</a>
                                     </Link>
                                 </li>
                                 {/* About Dropdown */}
                                 <li className="relative" ref={dropdownRef}>
-                                    <button onClick={toggleDropdown} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">About</button>
+                                    <button onClick={toggleDropdown} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">About</button>
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (
                                         <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
                                             <li>
                                                 <Link href="about/portfolio" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Personal Portfolio</a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Personal Portfolio</a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/about/company" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Company Info</a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Company Info</a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link href="/about/certifications" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orange dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>
+                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>
                                                 </Link>
                                             </li>
                                         </ul>
@@ -140,18 +140,18 @@ const Header = () => {
                                 </li>
                                 <li>
                                     <Link href="/services" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Services</a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Services</a>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href="/gallery" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange dark:text-gray-200">Gallery</a>
+                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Gallery</a>
                                     </Link>
                                 </li>
                             </ul>
                         </nav>
                         <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
-                            <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orange h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
+                            <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orangee hover:bg-orange-400 h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
                         </div>
                     </div>
                     <div className={`flex items-center pl-2 md:pl-4 h-[56px] ${isOpen ? 'py-3' : ''}`}>

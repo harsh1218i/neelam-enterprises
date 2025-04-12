@@ -35,15 +35,12 @@ export default function AboutUs() {
                     <p className="text-lg text-justify text-gray-800 dark:text-gray-200 max-w-3xl">
                         Established in <strong>2024</strong>, <strong>Neelam Enterprises</strong> is a proprietorship firm founded with a mission to contribute to India's public infrastructure by offering dependable and transparent contract services. We are a <strong>government-registered contractor</strong> based in <strong>Gwalior, Madhya Pradesh</strong>, working extensively on projects for <strong>PWD</strong>, <strong>CPWD</strong>, <strong>Indian Railways</strong>, <strong>MES</strong>, and other departments.
                     </p>
-
                     <p className="mt-4 text-justify text-md text-gray-700 dark:text-gray-300 max-w-3xl">
                         From humble beginnings, our journey has been driven by hard work, ground-level knowledge, and a clear commitment to quality. With a strong foundation in civil works, maintenance contracts, and tender execution, we take pride in delivering projects on time and as promised.
                     </p>
-
                     <p className="mt-4 text-justify text-md text-gray-600 dark:text-gray-400 max-w-3xl">
-                        Backed by certifications including <strong>GST registration</strong>, <strong>PWD contractor license</strong>, <strong>MSME certification</strong>, and <strong>Shop Act license</strong>, Neelam Enterprises operates with full compliance and integrity.
+                        Backed by certifications including <strong>GST registration</strong>, <strong>MPPWD Civil Registration</strong>, <strong>MSME certification</strong>, and <strong>Shop Act Registration</strong>, Neelam Enterprises operates with full compliance and integrity.
                     </p>
-
                     <div className="mt-6">
                         <a href="/about/company" className="text-orange hover:underline font-medium">
                             Read More About Our Journey →
@@ -57,10 +54,8 @@ export default function AboutUs() {
                         {/* Moving border layer */}
                         <div className="absolute inset-0 animate-border-move bg-[length:400%_400%] bg-gradient-to-tr to-lime-100 via-lime-400 from-green-700" />
                     </div>
-
                     {/* Inner white border to create spacing */}
                     <div className="absolute inset-1 rounded-3xl bg-white z-10" />
-
                     {/* Image on top */}
                     <Image alt="Logo" className="relative z-20 shadow-2xl shadow-orange rounded-3xl" src="/favicon-16x16.png" width={350} height={350}/>
                 </div>

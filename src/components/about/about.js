@@ -16,7 +16,7 @@ export default function AboutUs() {
                     </p>
                     <div className="mt-6"><a href="/about/company" className="text-orangee hover:text-orange-400 font-medium"><strong className='hover:underline underline-offset-8'>Read More About Our Journey</strong><strong> →</strong></a></div>
                 </div>
-                <div className="relative w-[360px] h-[336px] flex items-center justify-center">
+                <div className="relative w-[360px] h-[360px] flex items-center justify-center">
                     {/* Animated border wrapper */}
                     <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden">
                         {/* Moving border layer */}

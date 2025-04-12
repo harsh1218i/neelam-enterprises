@@ -88,7 +88,7 @@ const Header = () => {
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
                                     <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                        <Image alt='Logo' src='/favicon-16x16.png' width={67} height={60} />
+                                        <Image alt='Logo' src='/favicon-16x16.png' width={63} height={64} />
                                     </a>
                                 </Link>
                             </div>

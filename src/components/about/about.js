@@ -27,20 +27,20 @@ export default function AboutUs() {
         //     </div>
         // </section>
         <section className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
-            <div className="w-full flex max-sm:flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
-                <div className="">
+            <div className="w-full flex justify-between max-sm:flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
+                <div className="pr-4 mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                         About Neelam Enterprises
                     </h2>
-                    <p className="text-lg text-justify text-gray-800 dark:text-gray-200 max-w-2xl">
+                    <p className="text-lg text-justify text-gray-800 dark:text-gray-200 max-w-3xl">
                         Established in <strong>2024</strong>, <strong>Neelam Enterprises</strong> is a proprietorship firm founded with a mission to contribute to India's public infrastructure by offering dependable and transparent contract services. We are a <strong>government-registered contractor</strong> based in <strong>Gwalior, Madhya Pradesh</strong>, working extensively on projects for <strong>PWD</strong>, <strong>CPWD</strong>, <strong>Indian Railways</strong>, <strong>MES</strong>, and other departments.
                     </p>
 
-                    <p className="mt-4 text-justify text-md text-gray-700 dark:text-gray-300 max-w-2xl">
+                    <p className="mt-4 text-justify text-md text-gray-700 dark:text-gray-300 max-w-3xl">
                         From humble beginnings, our journey has been driven by hard work, ground-level knowledge, and a clear commitment to quality. With a strong foundation in civil works, maintenance contracts, and tender execution, we take pride in delivering projects on time and as promised.
                     </p>
 
-                    <p className="mt-4 text-justify text-md text-gray-600 dark:text-gray-400 max-w-2xl">
+                    <p className="mt-4 text-justify text-md text-gray-600 dark:text-gray-400 max-w-3xl">
                         Backed by certifications including <strong>GST registration</strong>, <strong>PWD contractor license</strong>, <strong>MSME certification</strong>, and <strong>Shop Act license</strong>, Neelam Enterprises operates with full compliance and integrity.
                     </p>
 
@@ -50,7 +50,7 @@ export default function AboutUs() {
                         </a>
                     </div>
                 </div>
-                <Image alt='Logo' src='/favicon-16x16.png' width={500} height={500} />            </div>
+                <Image alt='Logo' className='shadow-2xl rounded-2xl shadow-orange' src='/favicon-16x16.png' width={400} height={400} />            </div>
         </section>
     )
 }

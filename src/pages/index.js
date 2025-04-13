@@ -9,6 +9,7 @@ import Services from "../components/servicess/services";
 import WebsiteCover from "../components/websiteCover/websiteCover";
 import ScrollToTopButton from "../components/scrollToTopButton/scrollToTopButton";
 import AnimatedHeading from "../components/animatedHeading/animatedHeading";
+import SectionDivider from "../components/sectionDivider/sectionDivider";
 
 export default function Home() {
   return (
@@ -22,8 +23,11 @@ export default function Home() {
         <Header />
         <WebsiteCover comingFrom="home" />
         <AboutUs />
+        <SectionDivider/>
         <Services />
+        <SectionDivider/>
         <Gallery />
+        <SectionDivider/>
         <AnimatedHeading />
         <ContactUsBanner />
         <CompanyInfo />

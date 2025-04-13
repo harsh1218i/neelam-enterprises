@@ -58,7 +58,6 @@ const Header = () => {
 
     // 👇 Listen for DarkModeToggleDropdown open event and close hamburger if needed
     useEffect(() => {
-        console.log('harsh')
         const handleDarkModeOpen = () => {
             setIsOpen(false);
         };

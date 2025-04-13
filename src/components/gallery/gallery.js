@@ -3,7 +3,7 @@ import ProjectCard from "./projectCard";
 const projectsData = [
     {
       projectName: "Various R and M of Civil works of residential building under O and M Circle Bhind",
-      orgChain: "Madhya Pradesh Madhya Kshetra Vidyut Vitaran Company Limited||MPMKVVCL - Regional Office Gwalior||MPMKVVCL - Gwalior City Circle",
+      orgChain: "Madhya Pradesh Madhya Kshetra Vidyut Vitaran Company Limited || MPMKVVCL - Regional Office Gwalior || MPMKVVCL - Gwalior City Circle",
       location: "Bhind, Madhya Pradesh",
       amount: "₹3,54,237",
       tenderId: "2024_MKVVC_385943_2",
@@ -21,7 +21,7 @@ const projectsData = [
     },
     {
       projectName: "Arrangement of Drinking Water Cooler at Different Monuments of M.P. North Zone, Gwalior",
-      orgChain: "Directorate of Archaeology - Archives and Museums||AAM - Gwalior",
+      orgChain: "Directorate of Archaeology - Archives and Museums || AAM - Gwalior",
       location: "Gwalior, MP",
       amount: "₹4,96,620",
       tenderId: "2024_DAAM_387366_1",

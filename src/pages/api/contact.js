@@ -11,10 +11,8 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: 'Name, Phone, Email are required.' });
             }
 
-            // console.log('Connecting to database...');
             // Connect to MongoDB
             await dbConnect(); // Ensures you are connected to the database
-            // console.log('Database connected successfully.');
 
             // Save form data to MongoDB using Mongoose
             const newFormSubmission = new FormSubmission({
@@ -26,9 +24,6 @@ export default async function handler(req, res) {
             });
 
             await newFormSubmission.save(); // Save form data
-            // console.log('Form submission saved successfully.');
-
-            // console.log('Notification sent successfully.');
 
             return res.status(200).json({ message: 'Form submission successful!' });
         } catch (error) {

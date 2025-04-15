@@ -23,9 +23,9 @@ export default function AboutUs() {
                         <div className="absolute inset-0 animate-border-move bg-[length:400%_400%] bg-gradient-to-tr to-lime-100 via-lime-400 from-green-700" />
                     </div>
                     {/* Inner white border to create spacing */}
-                    <div className="absolute inset-1 rounded-3xl bg-white z-10" />
+                    <div className="absolute inset-1 rounded-3xl bg-gray-100 dark:bg-gray-800 z-10" />
                     {/* Image on top */}
-                    <Image alt="Logo" className="relative z-20 shadow-2xl shadow-orangee rounded-3xl" src="/favicon-16x16.png" width={350} height={350} />
+                    <Image alt="Logo" className="relative z-20 shadow-2xl shadow-orangee dark:shadow-gray-500 rounded-3xl" src="/favicon-16x16.png" width={350} height={350} />
                 </div>
             </div>
         </section>

@@ -19,13 +19,13 @@ export default function Home() {
         <meta name="description" content="Neelam Enterprises, a government-registered contractor, specializes in executing government tenders across various departments, with a primary focus on Madhya Pradesh. Our expertise spans PWD, CPWD, and other state government departments, ensuring quality and timely delivery. We also undertake projects for Indian Railways, MES, and other prestigious institutions, providing reliable and professional contracting services. Partner with us for excellence in every project." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main>
+      <main className="bg-gray-100 dark:bg-gray-800">
         <Header />
         <WebsiteCover comingFrom="home" />
         <AboutUs />
-        <SectionDivider/>
+        <SectionDivider />
         <Services />
-        <SectionDivider/>
+        <SectionDivider />
         <Gallery />
         <AnimatedHeading />
         <ContactUsBanner />

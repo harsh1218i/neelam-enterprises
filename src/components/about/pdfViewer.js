@@ -62,11 +62,11 @@ export default function PDFViewer({ file }) {
     
             // ✅ Draw watermark after page is rendered
             const watermarkText = "NEELAM ENTERPRISES";
-            context.font = "bold 80px sans-serif";
-            context.fillStyle = "rgba(255, 0, 0, 0.2)";
+            context.font = "bold 90px sans-serif";
+            context.fillStyle = "rgba(255, 0, 0, 0.25)";
             context.textAlign = "center";
             context.translate(canvas.width / 2, canvas.height / 2);
-            context.rotate(-Math.PI / 4); // Rotate for diagonal watermark
+            context.rotate(Math.PI / 4); // Rotate for diagonal watermark
             context.fillText(watermarkText, 0, 0);
             context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
     

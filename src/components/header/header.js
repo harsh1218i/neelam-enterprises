@@ -97,7 +97,7 @@ const Header = () => {
                                         {/* Inner white border to create spacing */}
                                         <div className="absolute inset-[2px] rounded-sm bg-gray-200 dark:bg-gray-800 z-10" />
                                         {/* Image on top */}
-                                        <Image alt="Logo" className="relative z-20 shadow-2xl shadow-orangee rounded-sm" src="/favicon-16x16.png" width={56} height={56} />
+                                        <Image alt="Logo" className="relative z-20 rounded-sm" src="/favicon-16x16.png" width={56} height={56} />
                                     </div>
                                 </Link>
                             </div>

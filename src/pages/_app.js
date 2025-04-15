@@ -83,8 +83,8 @@ export default function App({ Component, pageProps }) {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
 
         {/* Additional Icons for Web App Manifest */}
-        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-16x16.png" />
 
         {/* Optional: Web App Manifest for PWA support */}
         <link rel="manifest" href="/site.webmanifest" />

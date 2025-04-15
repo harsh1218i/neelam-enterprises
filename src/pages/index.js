@@ -27,7 +27,6 @@ export default function Home() {
         <Services />
         <SectionDivider/>
         <Gallery />
-        <SectionDivider/>
         <AnimatedHeading />
         <ContactUsBanner />
         <CompanyInfo />

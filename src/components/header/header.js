@@ -80,15 +80,25 @@ const Header = () => {
     return (
         <>
             <HeaderTop />
+            {/* To blur the background when hamburger is open in movile view */}
+            {/* {isOpen && (<div className="fixed inset-0 z-40 bg-black/70 dark:bg-black/80 backdrop-blur-sm lg:hidden" />)} */}
             <header className='flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0'>
-                <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
+                <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">
                         <div className="flex justify-between items-center h-[56px]">
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
-                                    <a className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
-                                        <Image alt='Logo' src='/favicon-16x16.png' width={63} height={64} />
-                                    </a>
+                                    <div className="relative w-[56px] h-[56px] flex items-center justify-center">
+                                        {/* Animated border wrapper */}
+                                        <div className="absolute inset-0 z-0 rounded-sm overflow-hidden">
+                                            {/* Moving border layer */}
+                                            <div className="absolute inset-0 animate-border-move bg-[length:200%_200%] bg-gradient-to-tr to-lime-100 via-lime-400 from-green-700" />
+                                        </div>
+                                        {/* Inner white border to create spacing */}
+                                        <div className="absolute inset-[2px] rounded-sm bg-gray-200 dark:bg-gray-800 z-10" />
+                                        {/* Image on top */}
+                                        <Image alt="Logo" className="relative z-20 shadow-2xl shadow-orangee rounded-sm" src="/favicon-16x16.png" width={56} height={56} />
+                                    </div>
                                 </Link>
                             </div>
                             <div className="flex lg:hidden items-center gap-3">

@@ -23,7 +23,7 @@ export default function VisitorCounter() {
 
   return (
     <div>
-      <h1>You are Visitor No: {visitCount !== null ? visitCount : 'Loading...'}</h1>
+      {/* <h1>You are Visitor No: {visitCount !== null ? visitCount : 'Loading...'}</h1> */}
     </div>
   );
 }

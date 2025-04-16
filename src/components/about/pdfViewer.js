@@ -8,7 +8,7 @@ GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 export default function PDFViewer({ file }) {
     const canvasRef = useRef(null);
-    const containerRef = useRef(null);
+    // const containerRef = useRef(null);
     const [pdfDoc, setPdfDoc] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [numPages, setNumPages] = useState(null);
@@ -25,41 +25,18 @@ export default function PDFViewer({ file }) {
         loadPdf();
     }, [file]);
 
-    // useEffect(() => {
-    //     const renderPage = async () => {
-    //         if (!pdfDoc) return;
-    //         setLoading(true);
-    //         const page = await pdfDoc.getPage(pageNumber);
-    //         const viewport = page.getViewport({ scale: 1.5 });
-    //         const canvas = canvasRef.current;
-    //         const context = canvas.getContext("2d");
-    //         // Fix the container height for smooth transitions
-    //         canvas.height = viewport.height;
-    //         canvas.width = viewport.width;
-    //         context.clearRect(0, 0, canvas.width, canvas.height);
-    //         await page.render({ canvasContext: context, viewport }).promise;
-    //         setLoading(false);
-    //     };
-    //     renderPage();
-    // }, [pdfDoc, pageNumber]);
-
     useEffect(() => {
         const renderPage = async () => {
             if (!pdfDoc) return;
             setLoading(true);
             const page = await pdfDoc.getPage(pageNumber);
             const viewport = page.getViewport({ scale: 1.5 });
-    
             const canvas = canvasRef.current;
             const context = canvas.getContext("2d");
-    
             canvas.height = viewport.height;
             canvas.width = viewport.width;
-    
             context.clearRect(0, 0, canvas.width, canvas.height);
-    
             await page.render({ canvasContext: context, viewport }).promise;
-    
             // ✅ Draw watermark after page is rendered
             const watermarkText = "NEELAM ENTERPRISES";
             context.font = "bold 90px sans-serif";
@@ -69,7 +46,6 @@ export default function PDFViewer({ file }) {
             context.rotate(Math.PI / 4); // Rotate for diagonal watermark
             context.fillText(watermarkText, 0, 0);
             context.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
-    
             setLoading(false);
         };
         renderPage();
@@ -83,7 +59,8 @@ export default function PDFViewer({ file }) {
     return (
         <div className="relative flex flex-col items-center" onContextMenu={(e) => e.preventDefault()}>
             {/* Canvas container with fixed height based on current page */}
-            <div ref={containerRef} className="w-full flex items-center justify-center transition-all duration-200 ease-in-out relative mb-4">
+            {/* <div ref={containerRef} className="w-full flex items-center justify-center transition-all duration-200 ease-in-out relative mb-4"> */}
+            <div className="w-full flex items-center justify-center transition-all duration-200 ease-in-out relative mb-4">
                 {/* Show canvas */}
                 <canvas ref={canvasRef} className="rounded-lg shadow-md max-w-full min-h-[475px] max-h-[475px] overflow-hidden" />
                 {/* Overlay loader */}

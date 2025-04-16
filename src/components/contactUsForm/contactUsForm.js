@@ -62,7 +62,7 @@ const ContactUsForm = () => {
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Address</h2>
                     <p className="py-2">
                         {options.address} <br />
-                        Landmark: {options.landmark} <br />
+                        {!!options.landmark && options.landmark !== '' ? <p>Landmark: {options.landmark} </p> : <></>}
                         {options.city} - {options.zip} <br />
                         {options.state} <br />
                         <a className="text-orangee flex items-center max-w-fit" href="https://maps.app.goo.gl/ikBaD3Txtt8i1vcG6?g_st=aw" target="blank">
@@ -72,10 +72,11 @@ const ContactUsForm = () => {
                             </svg>
                         </a>
                     </p>
-
-                    <h2 className="text-2xl md:text-3xl font-bold my-2">Phone</h2>
-                    <p className="pb-2">Phone No: <a className="text-orangee" href={`tel:${options.phone}`}>{options.phone}</a></p>
-
+                    {!!options.phone && options.phone !== '' ?
+                        <>
+                            <h2 className="text-2xl md:text-3xl font-bold my-2">Phone</h2>
+                            <p className="pb-2">Phone No:<a className='text-orangee' href={`tel:${options.phone}`}>{options.phone}</a></p>
+                        </> : <></>}
                     <h2 className="text-2xl md:text-3xl font-bold my-2">Email</h2>
                     <p className="pt-2">
                         <a className="text-orangee" href={`mailto:${options.company_email_domain}`}>{options.company_email_domain}</a>

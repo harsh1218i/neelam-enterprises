@@ -6,10 +6,10 @@ export default function CompanyInfo() {
     return (
         <div className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
             <div className="w-full flex max-sm:flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
-                <div className="basis-1/4">
+                <div className="basis-1/3">
                     <h1 className="text-2xl md:text-3xl font-bold my-2">{options.name}</h1>
                 </div>
-                <div className="basis-1/4 sm:px-2">
+                <div className="basis-1/6 sm:px-2">
                     <p className="text-2xl font-medium my-2">Address</p>
                     <p className="py-2">
                         {options.address} <br />
@@ -22,14 +22,14 @@ export default function CompanyInfo() {
                         </a>
                     </p>
                 </div>
-                <div className="basis-1/4 sm:px-2">
+                <div className="basis-1/3 sm:px-2">
                     <p className="text-2xl font-medium my-2">Contact Us</p>
                     <div className="flex flex-col"></div>
                     {!!options.phone && options.phone !== '' ? <p className="pt-2">Phone No:<a className='text-orangee' href={`tel:${options.phone}`}>{options.phone}</a></p> : <></>}
                     <p className='pt-2'>Email: <a className='text-orangee' href={`mailto:${options.company_email_domain}`}>{options.company_email_domain}</a></p>
                     <p className='py-2'><a className='text-orangee' href={`mailto:${options.company_email_gmail}`}>{options.company_email_gmail}</a></p>
                 </div>
-                <div className="basis-1/4 sm:px-2">
+                <div className="basis-1/6 sm:px-2">
                     <p className="text-2xl font-medium my-2">Social Media</p>
                     <SocialMediaLinks />
                 </div>

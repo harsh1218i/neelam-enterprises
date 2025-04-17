@@ -5,6 +5,7 @@ import Image from 'next/image';
 import DarkModeToggleDropdown from './darkModeToggleDropdown';
 import { usePathname } from "next/navigation";
 import HeaderTop from './headerTop';
+import ScrollProgressBar from './scrollProgressBar';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false); // Main menu state
@@ -79,6 +80,7 @@ const Header = () => {
 
     return (
         <>
+            <ScrollProgressBar />
             <HeaderTop />
             {/* To blur the background when hamburger is open in movile view */}
             {/* {isOpen && (<div className="fixed inset-0 z-40 bg-black/70 dark:bg-black/80 backdrop-blur-sm lg:hidden" />)} */}

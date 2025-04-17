@@ -11,36 +11,31 @@ const servicesData = [
     {
         image: "📑",
         heading: "Government Tender Execution",
-        description:
-            "End-to-end execution of government tenders including documentation, site setup, contractor coordination, and quality control.",
+        description: "End-to-end execution of government tenders including documentation, site setup, contractor coordination, and quality control.",
         category: "Government Projects",
     },
     {
         image: "🏗️",
         heading: "Public Infrastructure Development",
-        description:
-            "Construction of school buildings, public toilets, and other public utilities under approved norms.",
+        description: "Construction of school buildings, public toilets, and other public utilities under approved norms.",
         category: "Government Projects",
     },
     {
         image: "🏢",
         heading: "Renovation & Maintenance of Govt Quarters",
-        description:
-            "Civil, plumbing, electrical, and painting work in government quarters with long-term durability.",
+        description: "Civil, plumbing, electrical, and painting work in government quarters with long-term durability.",
         category: "Government Projects",
     },
     {
         image: "🪖",
         heading: "Military & Cantonment Area Projects",
-        description:
-            "MES and defense area projects executed under strict military protocol and standards.",
+        description: "MES and defense area projects executed under strict military protocol and standards.",
         category: "Government Projects",
     },
     {
         image: "🚰",
         heading: "RO & Water Cooler Installation",
-        description:
-            "Installation of water purifiers and coolers in public places with maintenance options.",
+        description: "Installation of water purifiers and coolers in public places with maintenance options.",
         category: "Government Projects",
     },
 
@@ -48,15 +43,13 @@ const servicesData = [
     {
         image: "🎨",
         heading: "Interior Designing & Architecture",
-        description:
-            "Interior and architectural design for offices and public buildings blending aesthetics and functionality.",
+        description: "Interior and architectural design for offices and public buildings blending aesthetics and functionality.",
         category: "Private & Support Services",
     },
     {
         image: "🛠️",
         heading: "Contract-Based Facility Maintenance",
-        description:
-            "Electrical, plumbing, sanitation, pest control, and civil works under maintenance contracts.",
+        description: "Electrical, plumbing, sanitation, pest control, and civil works under maintenance contracts.",
         category: "Private & Support Services",
     },
 
@@ -64,23 +57,23 @@ const servicesData = [
     {
         image: "📄",
         heading: "Business Document Preparation",
-        description:
-            "Helping individuals and businesses prepare essential documents for registrations, tenders, or project setups.",
+        description: "Helping individuals and businesses prepare essential documents for registrations, tenders, or project setups.",
         category: "Compliance & Business Support",
     },
     {
         image: "🧾",
         heading: "GST Filing & Compliance Support",
-        description:
-            "Support for GST filings and tax documentation (Disclaimer: Not a certified CA).",
+        description: "Support for GST filings and tax documentation (Disclaimer: Not a certified CA).",
         category: "Compliance & Business Support",
     },
 ];
 
+console.log(servicesData, 'harshservicesData')
 export default function Services() {
     const groupedServices = servicesData.reduce((acc, item) => {
         acc[item.category] = acc[item.category] || [];
         acc[item.category].push(item);
+        console.log(acc, 'harshacc');
         return acc;
     }, {});
 

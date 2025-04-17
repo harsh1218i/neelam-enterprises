@@ -15,7 +15,6 @@ import '../styles/nprogress-custom.css'; // Custom styles for the progress bar
 // import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 // Importing Head from Next.js
 import Head from 'next/head';
-import ScrollProgressBar from "../components/framerMotions/scrollProgressBar";
 
 NProgress.configure({ showSpinner: false });
 
@@ -68,7 +67,6 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       {/* <motion.div className="progress-bar" style={{ scaleX }} /> */}
-      <ScrollProgressBar />
       {/* Global head elements including favicon, icon, and apple-touch-icon */}
       <Head>
         <title>Neelam Enterprises</title>

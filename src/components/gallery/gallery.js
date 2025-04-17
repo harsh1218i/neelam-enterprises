@@ -42,7 +42,7 @@ const projectsData = [
 export default function Gallery() {
     return (
         <section className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
-            <div className="w-full flex flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
+            <div className="w-full flex flex-col xl:mx-20 lg:mx-10 px-4 xl:px-20 lg:px-10 max-w-[1310px]">
                 <h1 className="text-4xl max-sm:text-2xl underline font-bold mb-8">
                     Completed Projects / Gallery
                 </h1>

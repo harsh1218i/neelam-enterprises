@@ -2,7 +2,7 @@ import Image from 'next/image';
 export default function AboutUs() {
     return (
         <section className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
-            <div className="w-full flex justify-between max-lg:flex-col max-lg:items-center xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
+            <div className="w-full flex justify-between max-lg:flex-col max-lg:items-center xl:mx-20 lg:mx-10 px-4 xl:px-20 lg:px-10 max-w-[1310px]">
                 <div className="lg:pr-4 max-lg:mb-6">
                     <h2 className="text-4xl max-sm:text-2xl font-semibold text-gray-900 dark:text-white mb-8 underline">About Neelam Enterprises</h2>
                     <p className="text-lg text-justify text-gray-800 dark:text-gray-200 max-w-3xl">

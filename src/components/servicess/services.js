@@ -41,7 +41,7 @@ const servicesData = [
 export default function Services() {
   return (
     <section className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
-      <div className="flex w-full justify-between flex-col xl:mx-20 lg:mx-10 px-8 xl:px-20 lg:px-10 max-w-[1310px]">
+      <div className="flex w-full justify-between flex-col xl:mx-20 lg:mx-10 px-4 xl:px-20 lg:px-10 max-w-[1310px]">
         <h1 className="text-4xl max-sm:text-2xl font-semibold mb-8 underline">Services</h1>
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

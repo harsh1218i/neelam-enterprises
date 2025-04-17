@@ -85,7 +85,7 @@ const Header = () => {
             {/* To blur the background when hamburger is open in movile view */}
             {/* {isOpen && (<div className="fixed inset-0 z-40 bg-black/70 dark:bg-black/80 backdrop-blur-sm lg:hidden" />)} */}
             <header className='flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0'>
-                <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-8 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
+                <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-4 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
                     <div className="block w-full lg:flex md:justify-between">
                         <div className="flex justify-between items-center h-[56px]">
                             <div className="text-lg font-bold inline-block">
@@ -127,7 +127,9 @@ const Header = () => {
                                 </li>
                                 {/* About Dropdown */}
                                 <li className="relative" ref={dropdownRef}>
-                                    <button onClick={toggleDropdown} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">About</button>
+                                    <button onClick={toggleDropdown} className="inline lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-orangee dark:text-gray-200">About
+                                    <svg className='inline' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M480-346.43 256.82-568.61h446.36L480-346.43Z"/></svg>
+                                    </button>
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (
                                         <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>

@@ -85,12 +85,14 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon-16x16.png" />
 
         {/* Optional: Web App Manifest for PWA support */}
-        <link rel="manifest" href="/site.webmanifest" />
+        {/* <link rel="manifest" href="/site.webmanifest" /> */}
       </Head>
       {/* <AnimatePresence mode='wait'> */}
       {/* Main Component */}
       {showIntro ? (
-        <IntroOverlay onContinue={handleIntroFinish} />
+        <>
+          {/* <IntroOverlay onContinue={handleIntroFinish} /> */}
+        </>
       ) : (
         <div id="app-wrapper">
           <Component {...pageProps} />

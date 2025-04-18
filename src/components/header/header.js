@@ -90,7 +90,7 @@ const Header = () => {
                         <div className="flex justify-between items-center h-[56px]">
                             <div className="text-lg font-bold inline-block">
                                 <Link href="/" legacyBehavior>
-                                    <div className="relative w-[56px] h-[56px] flex items-center justify-center">
+                                    <div className="relative w-[56px] h-[56px] flex items-center justify-center cursor-pointer">
                                         {/* Animated border wrapper */}
                                         <div className="absolute inset-0 z-0 rounded-sm overflow-hidden">
                                             {/* Moving border layer */}

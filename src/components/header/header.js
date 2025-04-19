@@ -128,7 +128,7 @@ const Header = () => {
                                 {/* About Dropdown */}
                                 <li className="relative" ref={dropdownRef}>
                                     <button onClick={toggleDropdown} className="inline lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-orangee dark:text-gray-200">About
-                                    <svg className='inline' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M480-346.43 256.82-568.61h446.36L480-346.43Z"/></svg>
+                                        <svg className='inline' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M480-346.43 256.82-568.61h446.36L480-346.43Z" /></svg>
                                     </button>
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (

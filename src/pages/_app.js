@@ -89,15 +89,15 @@ export default function App({ Component, pageProps }) {
       </Head>
       {/* <AnimatePresence mode='wait'> */}
       {/* Main Component */}
-      {showIntro ? (
+      {/* {showIntro ? (
         <>
-          {/* <IntroOverlay onContinue={handleIntroFinish} /> */}
+          <IntroOverlay onContinue={handleIntroFinish} />
         </>
-      ) : (
-        <div id="app-wrapper">
-          <Component {...pageProps} />
-        </div>
-      )}
+      ) : ( */}
+      <div id="app-wrapper">
+        <Component {...pageProps} />
+      </div>
+      {/* )} */}
       {/* </AnimatePresence> */}
     </>
   );

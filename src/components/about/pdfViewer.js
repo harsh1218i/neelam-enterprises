@@ -73,9 +73,9 @@ export default function PDFViewer({ file }) {
             {/* Pagination Controls */}
             {numPages && (
                 <div className="mt-2 flex gap-3 justify-center items-center text-sm">
-                    <button onClick={prevPage} disabled={pageNumber === 1 || loading} className="px-4 py-1 bg-orangee text-white rounded disabled:opacity-50" >Prev</button>
+                    <button onClick={prevPage} disabled={pageNumber === 1 || loading} className="px-4 py-1 bg-orangee text-white rounded disabled:opacity-50 disabled:cursor-not-allowed" >Prev</button>
                     <span className="text-gray-800 dark:text-gray-300">{pageNumber} / {numPages}</span>
-                    <button onClick={nextPage} disabled={pageNumber === numPages || loading} className="px-4 py-1 bg-orangee text-white rounded disabled:opacity-50" >Next</button>
+                    <button onClick={nextPage} disabled={pageNumber === numPages || loading} className="px-4 py-1 bg-orangee text-white rounded disabled:opacity-50 disabled:cursor-not-allowed" >Next</button>
                 </div>
             )}
         </div>

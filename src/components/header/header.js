@@ -133,7 +133,7 @@ const Header = () => {
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (
                                         <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
-                                            <li>
+                                            {/* <li>
                                                 <Link href="about/portfolio" legacyBehavior>
                                                     <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Personal Portfolio</a>
                                                 </Link>
@@ -142,7 +142,7 @@ const Header = () => {
                                                 <Link href="/about/company" legacyBehavior>
                                                     <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Company Info</a>
                                                 </Link>
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <Link href="/about/certifications" legacyBehavior>
                                                     <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>

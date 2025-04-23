@@ -108,7 +108,7 @@ export default function Services() {
                     Delivering government-compliant infrastructure, private project execution, and compliance support with precision and dedication.
                 </p>
             </section>
-            <div className="flex justify-center items-center py-16 max-sm:py-8 max-lg:py-12">
+            <div className="flex justify-center items-center pt-16 max-sm:pt-8 max-lg:pt-12">
                 <div className="w-full max-sm:flex-col xl:mx-20 lg:mx-10 px-4 xl:px-20 lg:px-10 max-w-[1310px]">
 
 
@@ -135,7 +135,6 @@ export default function Services() {
 
                             <h2 className="text-4xl font-bold underline mb-8 text-center">Work Orders</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
                                 {workOrders.map((cert, index) => (
                                     <div key={index} className="p-4 border rounded-lg shadow-md bg-white dark:bg-neutral-900 hover:shadow-lg transition" >
                                         <h3 className="text-xl font-semibold text-orange-600 mb-4 text-center"><span className="underline text-gray-800 dark:text-gray-200">{!!cert.workTitle && cert.workTitle !== "" ? "Work Title:" : ""}</span>{!!cert.workTitle && cert.workTitle !== "" ? " " : ""}{cert.name || cert.workTitle}</h3>
@@ -151,7 +150,7 @@ export default function Services() {
                 </div>
             </div>
             {/* Why Choose Us */}
-            <section className="bg-gray-100 py-16 px-4">
+            <section className="bg-gray-100 pb-16 px-4">
                 <div className="max-w-[1300px] mx-auto text-center">
                     <h2 className="text-3xl font-bold text-gray-800 mb-10">Why Choose Neelam Enterprises?</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">

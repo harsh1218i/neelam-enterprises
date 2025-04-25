@@ -7,6 +7,14 @@ class MyDocument extends Document {
       <Html lang="en"> {/* Add the lang attribute here */}
         <Head>
           {/* Additional <head> tags can be added here */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ9PN4RXQG"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date());
+
+            gtag('config', 'G-GQ9PN4RXQG');
+          </script>
         </Head>
         <body>
           <Main />

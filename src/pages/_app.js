@@ -1,3 +1,4 @@
+import { AuthProvider } from "../context/AuthContext";
 import { useEffect, useState } from 'react';
 import "../globals.css";
 import '../components/companyInfoFooter/companyInfo.scss';
@@ -94,9 +95,11 @@ export default function App({ Component, pageProps }) {
           <IntroOverlay onContinue={handleIntroFinish} />
         </>
       ) : ( */}
-      <div id="app-wrapper">
-        <Component {...pageProps} />
-      </div>
+      <AuthProvider>
+        <div id="app-wrapper">
+          <Component {...pageProps} />
+        </div>
+      </AuthProvider>
       {/* )} */}
       {/* </AnimatePresence> */}
     </>

@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,6 +7,7 @@ import DarkModeToggleDropdown from './darkModeToggleDropdown';
 import { usePathname } from "next/navigation";
 import HeaderTop from './headerTop';
 import ScrollProgressBar from './scrollProgressBar';
+import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false); // Main menu state
@@ -15,6 +17,8 @@ const Header = () => {
     const dropdownRef = useRef(null);
     const pathName = usePathname();
     const isContactUsPage = pathName.includes("/contact-us");
+
+    const { user, logout } = useAuth();
 
     // 👇 Scroll lock logic
     useEffect(() => {
@@ -82,7 +86,7 @@ const Header = () => {
         <>
             <ScrollProgressBar />
             <HeaderTop />
-            {/* To blur the background when hamburger is open in movile view */}
+            {/* To blur the background when hamburger is open in mobile view */}
             {/* {isOpen && (<div className="fixed inset-0 z-40 bg-black/70 dark:bg-black/80 backdrop-blur-sm lg:hidden" />)} */}
             <header className='flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0'>
                 <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-4 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
@@ -118,6 +122,8 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Navigation links */}
                         <nav className={`${isOpen ? 'flex' : 'hidden'} z-50 px-4 lg:flex lg:items-center bg-gray-200 dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
                             <ul className="lg:flex lg:justify-between text-base lg:pt-0">
                                 <li>
@@ -127,22 +133,13 @@ const Header = () => {
                                 </li>
                                 {/* About Dropdown */}
                                 <li className="relative" ref={dropdownRef}>
-                                    <button onClick={toggleDropdown} className="inline lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-orangee dark:text-gray-200">About
+                                    <button onClick={toggleDropdown} className="inline lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-orangee dark:text-gray-200">
+                                        About
                                         <svg className='inline' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M480-346.43 256.82-568.61h446.36L480-346.43Z" /></svg>
                                     </button>
                                     {/* Dropdown menu */}
                                     {isDropdownOpen && (
                                         <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
-                                            {/* <li>
-                                                <Link href="about/portfolio" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Personal Portfolio</a>
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/about/company" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Company Info</a>
-                                                </Link>
-                                            </li> */}
                                             <li>
                                                 <Link href="/about/certifications" legacyBehavior>
                                                     <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>
@@ -163,13 +160,31 @@ const Header = () => {
                                 </li>
                             </ul>
                         </nav>
+
                         <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
                             <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orangee hover:bg-orange-400 h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
                         </div>
                     </div>
-                    <div className={`flex items-center pl-2 md:pl-4 h-[56px] ${isOpen ? 'py-3' : ''}`}>
+
+                    {/* User Info + DarkMode Toggle */}
+                    <div className={`flex items-center gap-3 pl-2 md:pl-4 ${isOpen ? 'py-3' : ''}`}>
+                        {user ? (
+                            <div className="flex items-center gap-2">
+                                <span className="text-green-700 dark:text-green-300 h-[36px] text-sm">
+                                    Welcome, {user.displayName ? user.displayName.split(' ')[0] : user.phoneNumber}
+                                </span>
+                                <button onClick={logout} className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <a href="/login" className="bg-orangee hover:bg-orange-600 text-white h-[36px] px-3 py-1 rounded">
+                                Login
+                            </a>
+                        )}
                         <DarkModeToggleDropdown />
                     </div>
+
                 </div>
             </header>
         </>

@@ -110,9 +110,6 @@ export default function Services() {
             </section>
             <div className="flex justify-center items-center pt-16 max-sm:pt-8 max-lg:pt-12">
                 <div className="w-full max-sm:flex-col xl:mx-20 lg:mx-10 px-4 xl:px-20 lg:px-10 max-w-[1310px]">
-
-{console.log(groupedServices, typeof groupedServices,  'harsh')}
-{console.log(Object.entries(groupedServices), typeof Object.entries(groupedServices), 'harsh11111')}
                     {/* === Grouped Services === */}
                     <section className="">
                         {Object.entries(groupedServices).map(([category, items], index) => (

@@ -111,7 +111,7 @@ export default function LoginPage() {
                     >
                         Login with Google
                     </button>
-                    <button
+                    {/* <button
                         onClick={loginWithFacebook}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
                     >
@@ -122,16 +122,16 @@ export default function LoginPage() {
                         className="w-full bg-sky-400 hover:bg-sky-500 text-white py-2 rounded-md transition"
                     >
                         Login with Twitter
-                    </button>
+                    </button> */}
                     <div className="flex justify-center mt-6">
-  <a href="/" className="flex items-center text-orangee hover:underline text-sm font-medium">
-    {/* Left Arrow Icon */}
-    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path>
-    </svg>
-    Back to Home
-  </a>
-</div>
+                        <a href="/" className="flex items-center text-orangee hover:underline text-sm font-medium">
+                            {/* Left Arrow Icon */}
+                            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            Back to Home
+                        </a>
+                    </div>
 
                 </div>
 

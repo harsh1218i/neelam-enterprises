@@ -10,38 +10,38 @@ import ScrollProgressBar from './scrollProgressBar';
 import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false); // Main menu state
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state for "About"
+    const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
     const hamBurgerRef = useRef(null);
     const dropdownRef = useRef(null);
     const pathName = usePathname();
     const isContactUsPage = pathName.includes("/contact-us");
-
     const { user, logout } = useAuth();
 
     // 👇 Scroll lock logic
-    useEffect(() => {
-        const preventScroll = (e) => e.preventDefault();
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.height = '100vh';
-            document.body.addEventListener('touchmove', preventScroll, { passive: false });
-        } else {
-            document.body.style.overflow = '';
-            document.body.style.height = '';
-            document.body.removeEventListener('touchmove', preventScroll);
-        }
-        return () => {
-            document.body.removeEventListener('touchmove', preventScroll);
-            document.body.style.overflow = '';
-            document.body.style.height = '';
-        };
-    }, [isOpen]);
+    // useEffect(() => {
+    //     const preventScroll = (e) => e.preventDefault();
+    //     if (isOpen) {
+    //         document.body.style.overflow = 'hidden';
+    //         document.body.style.height = '100vh';
+    //         document.body.addEventListener('touchmove', preventScroll, { passive: false });
+    //     } else {
+    //         document.body.style.overflow = '';
+    //         document.body.style.height = '';
+    //         document.body.removeEventListener('touchmove', preventScroll);
+    //     }
+    //     return () => {
+    //         document.body.removeEventListener('touchmove', preventScroll);
+    //         document.body.style.overflow = '';
+    //         document.body.style.height = '';
+    //     };
+    // }, [isOpen]);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobileView(window.innerWidth < 1024);
+            const width = window.innerWidth;
+            setIsMobileView(width < 768);
         };
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -49,25 +49,32 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
         const handleClickOutside = (event) => {
-            if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target) && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setTimeout(() => setIsOpen(false), 0);
+            if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target)) {
+                if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                    setTimeout(() => {
+                        setIsOpen(false);
+                        setIsDropdownOpen(false);
+                    }, 0);
+                }
             }
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setTimeout(() => setIsDropdownOpen(false), 0);
-            }
+            // if (hamBurgerRef.current && !hamBurgerRef.current.contains(event.target) && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            //     setTimeout(() => setIsOpen(false), 0);
+            // }
+            // if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            //     setTimeout(() => setIsDropdownOpen(false), 0);
+            // }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    // 👇 Listen for DarkModeToggleDropdown open event and close hamburger if needed
-    useEffect(() => {
-        const handleDarkModeOpen = () => {
-            setIsOpen(false);
-        };
-        window.addEventListener('darkModeDropdownOpened', handleDarkModeOpen);
-        return () => window.removeEventListener('darkModeDropdownOpened', handleDarkModeOpen);
     }, []);
 
     const disableContactUs = (event) => {
@@ -76,113 +83,129 @@ const Header = () => {
         }
     };
 
-    // Toggle dropdown for About section
     const toggleDropdown = (e) => {
         e.stopPropagation();
         setIsDropdownOpen(prev => !prev);
+    };
+
+    const closeMenu = () => {
+        setIsOpen(false);
+        setIsDropdownOpen(false);
     };
 
     return (
         <>
             <ScrollProgressBar />
             <HeaderTop />
-            {/* To blur the background when hamburger is open in mobile view */}
-            {/* {isOpen && (<div className="fixed inset-0 z-40 bg-black/70 dark:bg-black/80 backdrop-blur-sm lg:hidden" />)} */}
-            <header className='flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0'>
-                <div className={`w-full sticky flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-4 xl:px-20 lg:px-10 max-w-[1310px] ${!isOpen ? 'items-center' : ''}`}>
-                    <div className="block w-full lg:flex md:justify-between">
-                        <div className="flex justify-between items-center h-[56px]">
-                            <div className="text-lg font-bold inline-block">
-                                <Link href="/" legacyBehavior>
-                                    <div className="relative w-[56px] h-[56px] flex items-center justify-center cursor-pointer">
-                                        {/* Animated border wrapper */}
-                                        <div className="absolute inset-0 z-0 rounded-sm overflow-hidden">
-                                            {/* Moving border layer */}
-                                            <div className="absolute inset-0 animate-border-move bg-[length:200%_200%] bg-gradient-to-tr to-lime-100 via-lime-400 from-green-700" />
-                                        </div>
-                                        {/* Inner white border to create spacing */}
-                                        <div className="absolute inset-[2px] rounded-sm bg-gray-200 dark:bg-gray-800 z-10" />
-                                        {/* Image on top */}
-                                        <Image alt="Logo" className="relative z-20 rounded-sm" src="/favicon-16x16.png" width={56} height={56} />
-                                    </div>
-                                </Link>
+            <header className="flex z-50 justify-center items-center shadow-3xl shadow-black dark:shadow-white bg-gray-200 dark:bg-gray-800 sticky top-0">
+                <div className="w-full flex justify-between bg-gray-200 dark:bg-gray-800 top-0 z-[101] h-[56px] px-4 xl:px-20 lg:px-10 max-w-[1310px] items-center">
+
+                    {/* Left Logo */}
+                    <Link href="/" onClick={closeMenu}>
+                        <div className="relative w-[56px] h-[56px] flex items-center justify-center cursor-pointer">
+                            <div className="absolute inset-0 z-0 rounded-sm overflow-hidden">
+                                <div className="absolute inset-0 animate-border-move bg-[length:200%_200%] bg-gradient-to-tr to-lime-100 via-lime-400 from-green-700" />
                             </div>
-                            <div className="flex lg:hidden items-center gap-3">
-                                <a className={`md:w-auto text-center text-white text-text-md leading-text-md px-2 hover:no-underline hover:text-white rounded bg-orangee h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'opacity-50' : ''}`} onClick={disableContactUs} href="/contact-us">Contact Us</a>
-                                <div onClick={() => {
-                                    setIsOpen(!isOpen);
-                                    // 👇 Dispatch custom event to close dropdown
-                                    window.dispatchEvent(new Event('hamburgerToggled'));
-                                }} className="lg:hidden text-gray-800 dark:text-gray-200" ref={hamBurgerRef}>
-                                    {isOpen ? (
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
-                                    ) : (
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>
-                                    )}
-                                </div>
-                            </div>
+                            <div className="absolute inset-[2px] rounded-sm bg-gray-200 dark:bg-gray-800 z-10" />
+                            <Image alt="Logo" className="relative z-20 rounded-sm" src="/favicon-16x16.png" width={56} height={56} />
                         </div>
+                    </Link>
 
-                        {/* Navigation links */}
-                        <nav className={`${isOpen ? 'flex' : 'hidden'} z-50 px-4 lg:flex lg:items-center bg-gray-200 dark:bg-gray-800 lg:h-[56px] mt-2 ms-12 lg:m-0 lg:w-auto rounded`}>
-                            <ul className="lg:flex lg:justify-between text-base lg:pt-0">
-                                <li>
-                                    <Link href="/" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Home</a>
-                                    </Link>
-                                </li>
-                                {/* About Dropdown */}
-                                <li className="relative" ref={dropdownRef}>
-                                    <button onClick={toggleDropdown} className="inline lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-orangee dark:text-gray-200">
-                                        About
-                                        <svg className='inline' xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#f26621"><path d="M480-346.43 256.82-568.61h446.36L480-346.43Z" /></svg>
-                                    </button>
-                                    {/* Dropdown menu */}
-                                    {isDropdownOpen && (
-                                        <ul className={`${isMobileView ? 'block' : 'absolute w-60'} bg-white dark:bg-gray-800 shadow-lg py-2 rounded-lg`}>
-                                            <li>
-                                                <Link href="/about/certifications" legacyBehavior>
-                                                    <a onClick={() => setIsOpen(false)} className="block px-4 py-2 hover:bg-orangee dark:hover:bg-gray-700 dark:text-gray-200">Certifications & Licenses</a>
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <li>
-                                    <Link href="/services" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Services</a>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/gallery" legacyBehavior>
-                                        <a onClick={() => setIsOpen(false)} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orangee dark:text-gray-200">Gallery</a>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </nav>
+                    {/* Middle Navigation */}
+                    <nav className={`${isOpen ? "flex flex-col" : "hidden"} lg:flex lg:flex-row lg:items-center lg:static absolute top-[56px] left-0 w-full bg-white dark:bg-gray-800 shadow-md lg:shadow-none`}>
+                        <ul className="flex flex-col justify-center lg:items-center lg:flex-row w-full lg:bg-gray-200 lg:dark:bg-gray-800 max-lg:bg-gray-300 max-lg:dark:bg-gray-700 max-lg:py-2">
 
-                        <div className="hidden lg:flex md:flex-row justify-center md:justify-start items-center gap-6">
-                            <a className={`w-full text-center text-white px-4 hover:no-underline hover:text-white rounded bg-orangee hover:bg-orange-400 h-[36px] flex items-center ${pathName.includes("/contact-us") ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} onClick={disableContactUs} href='/contact-us'>Contact Us</a>
-                        </div>
-                    </div>
+                            <li onClick={closeMenu}>
+                                <Link href="/" className="nav-link">Home</Link>
+                            </li>
 
-                    {/* User Info + DarkMode Toggle */}
-                    <div className={`flex items-center gap-3 pl-2 md:pl-4 ${isOpen ? 'py-3' : ''}`}>
-                        {user ? (
-                            <div className="flex items-center gap-2">
-                                <span className="text-green-700 dark:text-green-300 h-[36px] text-sm">
-                                    Welcome, {user.displayName ? user.displayName.split(' ')[0] : user.phoneNumber}
-                                </span>
-                                <button onClick={logout} className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">
-                                    Logout
+                            <li className="relative" ref={dropdownRef}>
+                                <button onClick={toggleDropdown} className="nav-link flex flex-row items-center gap-1">
+                                    <span>About</span>
+                                    <svg className="w-4 h-4 text-orangee" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.583l3.71-4.352a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                                    </svg>
                                 </button>
-                            </div>
-                        ) : (
-                            <a href="/login" className="bg-orangee hover:bg-orange-600 text-white h-[36px] px-3 py-1 rounded">
-                                Login
-                            </a>
+                                {isDropdownOpen && (
+                                    <ul className="absolute max-lg:left-4 lg:top-[50px] max-lg:top-full mt-1 lg:mt-0 bg-white dark:bg-gray-600 shadow-lg rounded-md overflow-hidden">
+                                        <li onClick={closeMenu}>
+                                            <Link href="/about/portfolio" className="dropdown-link">Personal Portfolio</Link>
+                                        </li>
+                                        <li onClick={closeMenu}>
+                                            <Link href="/about/company" className="dropdown-link">Company Info</Link>
+                                        </li>
+                                        <li onClick={closeMenu}>
+                                            <Link href="/about/certifications" className="dropdown-link">Certifications & Licenses</Link>
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+
+                            <li onClick={closeMenu}>
+                                <Link href="/services" className="nav-link">Services</Link>
+                            </li>
+                            <li onClick={closeMenu}>
+                                <Link href="/gallery" className="nav-link">Gallery</Link>
+                            </li>
+                            <li onClick={closeMenu}>
+                                <Link href="/blogs" className="nav-link">Blogs</Link>
+                            </li>
+
+                            {isMobileView && (
+                                <li className="flex justify-between mt-4 items-center w-full px-4">
+                                    <Link href="/contact-us" onClick={disableContactUs} className={`btn-contact ${isContactUsPage ? "opacity-50 cursor-not-allowed" : ""}`}>
+                                        Contact Us
+                                    </Link>
+                                    {user ? (
+                                        <button onClick={() => { logout(); closeMenu(); }} className="btn-logout">Logout</button>
+                                    ) : (
+                                        <Link href="/login" onClick={closeMenu} className="btn-login">Login</Link>
+                                    )}
+                                </li>
+                            )}
+                        </ul>
+                    </nav>
+
+                    <div className="flex items-center gap-3">
+                        {!isMobileView && (
+                            <>
+                                <Link href="/contact-us" onClick={disableContactUs} className={`btn-contact ${isContactUsPage ? "opacity-50 cursor-not-allowed" : ""}`}>
+                                    Contact Us
+                                </Link>
+                                {user ? (
+                                    <button onClick={logout} className="btn-logout">Logout</button>
+                                ) : (
+                                    <Link href="/login" className="btn-login">Login</Link>
+                                )}
+                            </>
                         )}
+
+                        {user && (
+                            <Link href="/profile" className="text-green-700 hover:underline underline-offset-2 dark:text-green-300 text-sm inline-block" onClick={closeMenu}>
+                                Welcome <br />{user.displayName ? user.displayName.split(' ')[0] : user.phoneNumber}
+                            </Link>
+                        )}
+
                         <DarkModeToggleDropdown />
+
+                        <div
+                            onClick={() => {
+                                setIsOpen(prev => !prev);
+                                setIsDropdownOpen(false);
+                            }}
+                            ref={hamBurgerRef}
+                            className="block lg:hidden cursor-pointer"
+                        >
+                            {isOpen ? (
+                                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            ) : (
+                                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M3 6h18M3 12h18M3 18h18" />
+                                </svg>
+                            )}
+                        </div>
                     </div>
 
                 </div>

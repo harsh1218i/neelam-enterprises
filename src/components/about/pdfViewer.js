@@ -1,5 +1,3 @@
-// /components/PDFViewer.js
-
 'use client';
 
 import { useEffect, useRef, useState } from "react";
@@ -7,11 +5,12 @@ import * as pdfjsLib from "pdfjs-dist";
 import { GlobalWorkerOptions } from "pdfjs-dist/build/pdf";
 import LoginModal from "../loginModal";
 import { useAuth } from "../../context/AuthContext";
+
 GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 export default function PDFViewer({ file }) {
     const canvasRef = useRef(null);
-    const { user } = useAuth();
+    const { user, profileComplete } = useAuth(); // ✅ get profileComplete too
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [pdfDoc, setPdfDoc] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
@@ -62,6 +61,8 @@ export default function PDFViewer({ file }) {
         if (pageNumber > 1) setPageNumber((prev) => prev - 1);
     };
 
+    const needsLogin = !user || !profileComplete; // ✅ check both
+
     return (
         <div className="relative flex flex-col items-center" onContextMenu={(e) => e.preventDefault()}>
             <div className="w-full flex items-center justify-center transition-all duration-200 ease-in-out relative mb-4">
@@ -69,12 +70,12 @@ export default function PDFViewer({ file }) {
                 <canvas
                     ref={canvasRef}
                     className={`rounded-lg shadow-md max-w-full min-h-[475px] max-h-[475px] overflow-hidden ${
-                        !user ? 'filter blur-md brightness-75' : ''
+                        needsLogin ? 'filter blur-md brightness-75' : ''
                     }`}
                 />
 
-                {/* Show overlay button if not logged in */}
-                {!user && (
+                {/* Show overlay button if not logged in or profile incomplete */}
+                {needsLogin && (
                     <div className="absolute inset-0 flex items-center justify-center">
                         <button
                             onClick={() => setShowLoginModal(true)}
